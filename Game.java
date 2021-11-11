@@ -27,6 +27,7 @@ public class Game {
                          "List items: l",
                          "Equip weapon: w",
                          "Equip armor: a",
+                         "Save: s",
                          "Quit: q"
         };
         Terminal.setForeground(Color.GREEN);
