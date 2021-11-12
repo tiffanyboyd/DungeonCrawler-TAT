@@ -7,7 +7,7 @@ public class World{
   //once the player goes to the next room - increment level
 
   public int getRoomNum(){
-      return roomNUm;
+      return roomNum;
   }
    
 
