@@ -65,7 +65,7 @@ public class Room {
         pw.println(cols);
         pw.println(desc);
         pw.println(".");
-}
+     }
     // returns the player's strting location in this room
     public Position getPlayerStart() {
         for (int row = 0; row < rows; row++) {

@@ -9,7 +9,7 @@ public class World{
   //keeps track of room change?
   //once the player goes to the next room - increment level
   for(String filename: rooms){
-    World(String filename) throws exception{
+    World(String filename) throws Exception{
       Scanner s = new Scanner(new FileReader(filename));
     //...
     }
