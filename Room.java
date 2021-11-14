@@ -8,19 +8,25 @@ import ansi_terminal.*;
 public class Room {
     // the grid holds the room geometry
     private String[] grid;
-
+    private String desc;
     // the size of the room
     private int rows;
     private int cols;
 
-    public Room() {
+    public Room(Scanner s) {
         // this initializes the room to one specific space
-        rows = 30;
-        cols = 60;
+        rows = s.nextInt();
+        cols = s.nextInt();
 
         // the actual room geometry
         // the i cells refer to where an item should be placed at
-        grid  = new String[] {
+       desc =""; 
+       String next = s.nextLine();
+       while (!next.equals(".")){
+         grid  = desc + next + "\n";
+         next = s.nextLine();
+       }
+        /*    new String[] {
             "##################                ######################    ",
             "##              ##                ##      i           ##    ",
             "##  @           ###########       ##        *         ##    ",
@@ -53,7 +59,13 @@ public class Room {
             "############                                                "
         };
     }
-
+*/
+    void persist(printWriter pw){
+        pw.println(rows);
+        pw.println(cols);
+        pw.println(desc);
+        pw.println(".");
+}
     // returns the player's strting location in this room
     public Position getPlayerStart() {
         for (int row = 0; row < rows; row++) {
