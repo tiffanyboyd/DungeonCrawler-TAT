@@ -9,12 +9,14 @@ public class Game {
     private Player player;
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
+    private ArrayList<Teleporter> teles;
 
     public Game() {
         room = new Room();
         player = new Player(room.getPlayerStart());
         boxes = room.getBoxes();
         enemies = room.getEnemies();
+	teles = room.getTeleporters(); //MAKE A GET TELEPORTER METHOD
     }
 
     // prints a help menu to the left of the map
@@ -144,6 +146,19 @@ public class Game {
         }
 
         return null;
+    }
+
+    // returns a Teleporter if the player is on it -- otherwise null
+    private Teleporter checkForTele(){
+	position playerLocation = player.getPosition();
+
+	for (Teleporter teleporter : teles){
+	    if (playerLocation.equals(teleporter.getPosition())){
+		return teleporter;
+	    }
+	}
+
+	return null;
     }
 
     // check for battles and return false if player has died

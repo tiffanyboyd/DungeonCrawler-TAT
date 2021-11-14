@@ -94,6 +94,21 @@ public class Room {
         return boxes;
     }
 
+    //THIS IS NEW CODE IF EVERYTHING BREAKS ITS BECAUSE OF THIS
+    //Should return a set of teleporters for this map, depends on room geometry
+    public Arraylist<Teleporter> getTeleporters() {
+	ArrayList<Teleporter> teles = new ArrayList<Teleporter>();
+	for (int row = 0; row < rows; row++) {
+	    for(int col = 0; col < cols; col++) {
+		if (grid[row].charAt(col) == '^') {
+		   teles.add(new Teleporter(row, col));
+		}
+	    }
+	}
+	
+	return teles;
+    }
+
     // returns a set of enemies from this map, similarly to the boxes above
     public ArrayList<Enemy> getEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<Enemy>();
