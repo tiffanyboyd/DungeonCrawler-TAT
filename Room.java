@@ -1,7 +1,8 @@
 // Room.java
 // provides code for the drawing of a room
 // also provides starting locations for the player, boxes, and enemies
-
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.ArrayList;
 import ansi_terminal.*;
 
@@ -12,7 +13,40 @@ public class Room {
     // the size of the room
     private int rows;
     private int cols;
-
+    
+    public void loadRoom(int roomNum){
+	Scanner in = new Scanner(System.in);
+	switch(roomNum){
+	     case 1:
+		try{
+		   File f = new File("Room1.txt");
+		   in = new scanner(f);
+		}catch (FileNotFoundException e){
+			System.out.print("Something went wrong :(");
+			System.exit(-1);
+		}
+		break;
+	     case 2:
+		try{
+		   File f = new File("Room2.txt");
+		   in = new scanner(f);
+		}catch (FileNotFoundException e){
+			System.out.print("Something went wrong :(");
+			System.exit(-1);
+		}
+		break;
+	     case 3:
+		try{
+		   File f = new File("Room3.txt");
+		   in = new scanner(f);
+		}catch (FileNotFoundException e){
+			System.out.print("Something went wrong :,(");
+			System.exit(-1);
+		}
+		break;
+	}
+	room = new Room(in);
+    }
     public Room(Scanner s) {
         // this initializes the room to one specific space
         rows = s.nextInt();
@@ -60,11 +94,11 @@ public class Room {
         };
     }
 */
-    void persist(printWriter pw){
-        pw.println(rows);
-        pw.println(cols);
-        pw.println(desc);
-        pw.println(".");
+//    void persist(printWriter pw){
+//        pw.println(rows);
+//        pw.println(cols);
+//        pw.println(desc);
+//        pw.println(".");
      }
     // returns the player's strting location in this room
     public Position getPlayerStart() {
