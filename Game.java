@@ -6,17 +6,19 @@ import ansi_terminal.*;
 
 public class Game {
     private Room room;
+    private World world;
     private Player player;
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
-    private ArrayList<Teleporter> teles;
+//    private ArrayList<Teleporter> teles;
 
     public Game() {
-        room = new Room();
+        //room = new Room();
+	world = new World(1);
         player = new Player(room.getPlayerStart());
         boxes = room.getBoxes();
         enemies = room.getEnemies();
-	teles = room.getTeleporters(); //MAKE A GET TELEPORTER METHOD
+//	teles = room.getTeleporters(); //MAKE A GET TELEPORTER METHOD
     }
 
     // prints a help menu to the left of the map
@@ -149,17 +151,17 @@ public class Game {
     }
 
     // returns a Teleporter if the player is on it -- otherwise null
-    private Teleporter checkForTele(){
-	position playerLocation = player.getPosition();
-
-	for (Teleporter teleporter : teles){
-	    if (playerLocation.equals(teleporter.getPosition())){
-		return teleporter;
-	    }
-	}
-
-	return null;
-    }
+//    private Teleporter checkForTele(){
+//	position playerLocation = player.getPosition();
+//
+//	for (Teleporter teleporter : teles){
+//	    if (playerLocation.equals(teleporter.getPosition())){
+//		return teleporter;
+//	    }
+//	}
+//
+//	return null;
+//    }
 
     // check for battles and return false if player has died
     private boolean checkBattles() {

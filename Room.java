@@ -1,6 +1,7 @@
 // Room.java
 // provides code for the drawing of a room
 // also provides starting locations for the player, boxes, and enemies
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -19,8 +20,9 @@ public class Room {
 	switch(roomNum){
 	     case 1:
 		try{
-		   File f = new File("Room1.txt");
-		   in = new scanner(f);
+		   FileInputStream file = new FileInputStream("Room1.txt");
+		   //File f = new File("Room1.txt");
+		   in = new Scanner(file);
 		}catch (FileNotFoundException e){
 			System.out.print("Something went wrong :(");
 			System.exit(-1);
@@ -28,8 +30,9 @@ public class Room {
 		break;
 	     case 2:
 		try{
-		   File f = new File("Room2.txt");
-		   in = new scanner(f);
+		   FileInputStream file = new FileInputStream("Room2.txt");
+	//	   File f = new File("Room2.txt");
+		   in = new Scanner(file);
 		}catch (FileNotFoundException e){
 			System.out.print("Something went wrong :(");
 			System.exit(-1);
@@ -37,28 +40,39 @@ public class Room {
 		break;
 	     case 3:
 		try{
-		   File f = new File("Room3.txt");
-		   in = new scanner(f);
+		  // File f = new File("Room3.txt");
+		   FileInputStream file = new FileInputStream("Room3.txt");
+		   in = new Scanner(file);
 		}catch (FileNotFoundException e){
 			System.out.print("Something went wrong :,(");
 			System.exit(-1);
 		}
 		break;
 	}
-	room = new Room(in);
+	Room room = new Room(in);
     }
+    public Room(){
+    }
+
     public Room(Scanner s) {
         // this initializes the room to one specific space
-        rows = s.nextInt();
+        Scanner in = new Scanner(System.in);
+
+	rows = s.nextInt();
         cols = s.nextInt();
 
         // the actual room geometry
         // the i cells refer to where an item should be placed at
-       desc =""; 
+       desc ="";
+       //int size = rows * cols; 
        String next = s.nextLine();
+       grid = new String[rows];
+       int row = 0;
        while (!next.equals(".")){
-         grid  = desc + next + "\n";
-         next = s.nextLine();
+         grid[row]= s.nextLine();
+	 row++;
+	//grid.add(desc + next + "\n");
+        // next = s.nextLine();
        }
         /*    new String[] {
             "##################                ######################    ",
@@ -130,18 +144,18 @@ public class Room {
 
     //THIS IS NEW CODE IF EVERYTHING BREAKS ITS BECAUSE OF THIS
     //Should return a set of teleporters for this map, depends on room geometry
-    public Arraylist<Teleporter> getTeleporters() {
-	ArrayList<Teleporter> teles = new ArrayList<Teleporter>();
-	for (int row = 0; row < rows; row++) {
-	    for(int col = 0; col < cols; col++) {
-		if (grid[row].charAt(col) == '^') {
-		   teles.add(new Teleporter(row, col));
-		}
-	    }
-	}
+//    public Arraylist<Teleporter> getTeleporters() {
+//	ArrayList<Teleporter> teles = new ArrayList<Teleporter>();
+//	for (int row = 0; row < rows; row++) {
+//	    for(int col = 0; col < cols; col++) {
+//		if (grid[row].charAt(col) == '^') {
+//		   teles.add(new Teleporter(row, col));
+//		}
+//	    }
+//	}
 	
-	return teles;
-    }
+//	return teles;
+  //  }
 
     // returns a set of enemies from this map, similarly to the boxes above
     public ArrayList<Enemy> getEnemies() {
