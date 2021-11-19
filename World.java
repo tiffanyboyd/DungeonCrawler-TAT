@@ -2,7 +2,7 @@ import ansi_terminal.*;
 
 public class World{
   private int roomNum=1;
-  Room r = new Room();
+  //Room r = new Room();
 //  private ArrayList<String> rooms = new ArrayList<String>();
 //  rooms.add(Room1);
 //  rooms.add(Room2);
@@ -15,7 +15,7 @@ public class World{
     //...
 //    }
 //  }  
-  public World(int roomNumber){
+  public World(Room r, int roomNumber){
       r.loadRoom(roomNumber);
   }
 

@@ -56,7 +56,7 @@ public class Room {
 
     public Room(Scanner s) {
         // this initializes the room to one specific space
-        Scanner in = new Scanner(System.in);
+//        Scanner s = new Scanner(System.in);
 
 	rows = s.nextInt();
         cols = s.nextInt();
@@ -65,11 +65,14 @@ public class Room {
         // the i cells refer to where an item should be placed at
        desc ="";
        //int size = rows * cols; 
-       String next = s.nextLine();
+       //String next = s.nextLine();
        grid = new String[rows];
        int row = 0;
-       while (!next.equals(".")){
+      // while (!next.equals(".")){
+	while(row < rows){
          grid[row]= s.nextLine();
+	 System.out.println("row " + row);
+	 System.out.println(grid[row]);
 	 row++;
 	//grid.add(desc + next + "\n");
         // next = s.nextLine();
@@ -116,6 +119,7 @@ public class Room {
      }
     // returns the player's strting location in this room
     public Position getPlayerStart() {
+	System.out.println("This is in getPlayer Start, num rows is: " + rows);
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 if (grid[row].charAt(col) == '@') {
@@ -123,7 +127,7 @@ public class Room {
                 }
             }
         }
-
+        System.out.println("null :(");
         return null;
     }
 

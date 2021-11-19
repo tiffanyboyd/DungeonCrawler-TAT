@@ -1,10 +1,11 @@
 // Game.java
 // contains logic for running the Game
-
+import java.util.Scanner;
 import java.util.ArrayList;
 import ansi_terminal.*;
 
 public class Game {
+    Scanner s = new Scanner(System.in);
     private Room room;
     private World world;
     private Player player;
@@ -13,8 +14,9 @@ public class Game {
 //    private ArrayList<Teleporter> teles;
 
     public Game() {
-        //room = new Room();
-	world = new World(1);
+//	Scanner s = new Scanner(System.in);
+        room = new Room(s);
+	world = new World(room, 1);
         player = new Player(room.getPlayerStart());
         boxes = room.getBoxes();
         enemies = room.getEnemies();
