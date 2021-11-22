@@ -14,8 +14,11 @@ public class Room {
     // the size of the room
     private int rows;
     private int cols;
+    private int baseCase;
     
-    public void loadRoom(int roomNum){
+/*    public Room loadRoom(int roomNum){
+	System.out.println("this is loadroom");
+	baseCase = 1;
 	Scanner in = new Scanner(System.in);
 	switch(roomNum){
 	     case 1:
@@ -49,18 +52,19 @@ public class Room {
 		}
 		break;
 	}
-	Room room = new Room(in);
-    }
-    public Room(){
-    }
+	Room room = new Room(in, baseCase);
+	return room;
+ } */  
 
     public Room(Scanner s) {
-        // this initializes the room to one specific space
-//        Scanner s = new Scanner(System.in);
-
-	rows = s.nextInt();
-        cols = s.nextInt();
-
+      rows = s.nextInt();
+      cols = s.nextInt();
+//	rows = 0;
+//	cols = 0;
+//	while(s.next() != "."){
+//	rows++;
+//	cols++;
+//	}
         // the actual room geometry
         // the i cells refer to where an item should be placed at
        desc ="";
@@ -71,8 +75,8 @@ public class Room {
       // while (!next.equals(".")){
 	while(row < rows){
          grid[row]= s.nextLine();
-	 System.out.println("row " + row);
-	 System.out.println(grid[row]);
+	 //rows++;
+	 //cols++;
 	 row++;
 	//grid.add(desc + next + "\n");
         // next = s.nextLine();
@@ -116,12 +120,12 @@ public class Room {
 //        pw.println(cols);
 //        pw.println(desc);
 //        pw.println(".");
-     }
+      }
     // returns the player's strting location in this room
     public Position getPlayerStart() {
 	System.out.println("This is in getPlayer Start, num rows is: " + rows);
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == '@') {
                     return new Position(row, col);
                 }
@@ -135,8 +139,8 @@ public class Room {
     // the room geometry for where the boxes make sense to be
     public ArrayList<Box> getBoxes() {
         ArrayList<Box> boxes = new ArrayList<Box>();
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == 'i') {
                     boxes.add(new Box(row, col, ItemGenerator.generate()));
                 }
@@ -148,24 +152,24 @@ public class Room {
 
     //THIS IS NEW CODE IF EVERYTHING BREAKS ITS BECAUSE OF THIS
     //Should return a set of teleporters for this map, depends on room geometry
-//    public Arraylist<Teleporter> getTeleporters() {
-//	ArrayList<Teleporter> teles = new ArrayList<Teleporter>();
-//	for (int row = 0; row < rows; row++) {
-//	    for(int col = 0; col < cols; col++) {
-//		if (grid[row].charAt(col) == '^') {
-//		   teles.add(new Teleporter(row, col));
-//		}
-//	    }
-//	}
+    public ArrayList<Teleporter> getTeleporters() {
+	ArrayList<Teleporter> teles = new ArrayList<Teleporter>();
+	for (int row = 1; row < rows; row++) {
+	    for(int col = 1; col < cols; col++) {
+		if (grid[row].charAt(col) == '^') {
+		   teles.add(new Teleporter(row, col));
+		}
+	    }
+	}
 	
-//	return teles;
-  //  }
+	return teles;
+    }
 
     // returns a set of enemies from this map, similarly to the boxes above
     public ArrayList<Enemy> getEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == '*') {
                     enemies.add(EnemyGenerator.generate(row, col));
                 }
@@ -186,8 +190,9 @@ public class Room {
     // draws the map to the screen
     public void draw() {
         Terminal.clear();
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
+		//System.out.print("checking row: " + row + "and col: " + col + " now \n\r");
                 char cell = grid[row].charAt(col);
                 if (cell == '#') {
                     // a unicode block symbol
@@ -207,6 +212,4 @@ public class Room {
         return grid[row].charAt(col) != '#';
     }
 }
-
-
 

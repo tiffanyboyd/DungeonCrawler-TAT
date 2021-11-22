@@ -6,21 +6,21 @@ import ansi_terminal.*;
 
 public class Game {
     Scanner s = new Scanner(System.in);
-    private Room room;
+    private Room currentRoom;
     private World world;
     private Player player;
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
-//    private ArrayList<Teleporter> teles;
+    private ArrayList<Teleporter> teles;
 
     public Game() {
-//	Scanner s = new Scanner(System.in);
-        room = new Room(s);
-	world = new World(room, 1);
-        player = new Player(room.getPlayerStart());
-        boxes = room.getBoxes();
-        enemies = room.getEnemies();
-//	teles = room.getTeleporters(); //MAKE A GET TELEPORTER METHOD
+	world = new World();
+	currentRoom = world.getRoom1();
+	currentRoom.draw();
+        player = new Player(currentRoom.getPlayerStart());
+        boxes = currentRoom.getBoxes();
+        enemies = currentRoom.getEnemies();
+	teles = currentRoom.getTeleporters(); //MAKE A GET TELEPORTER METHOD
     }
 
     // prints a help menu to the left of the map
@@ -38,7 +38,7 @@ public class Game {
         };
         Terminal.setForeground(Color.GREEN);
         for (int row = 0; row < cmds.length; row++) {
-            Terminal.warpCursor(row + 1, room.getCols());
+            Terminal.warpCursor(row + 1, currentRoom.getCols());
             System.out.print(cmds[row]);
         }
         Terminal.reset();
@@ -47,13 +47,13 @@ public class Game {
     // right under the map we keep a line for status messages
     private void setStatus(String mesg) {
         // clear anything old first
-        Terminal.warpCursor(room.getRows(), 0);
+        Terminal.warpCursor(currentRoom.getRows(), 0);
         for (int i = 0; i < 100; i++) {
             System.out.print(" ");
         }
 
         // then print the message
-        Terminal.warpCursor(room.getRows(), 0);
+        Terminal.warpCursor(currentRoom.getRows(), 0);
         System.out.print(mesg);
     }
 
@@ -115,13 +115,13 @@ public class Game {
                 break;
 
             // handle movement
-            case LEFT: player.move(0, -1, room);
+            case LEFT: player.move(0, -1, currentRoom);
                 break;
-            case RIGHT: player.move(0, 1, room);
+            case RIGHT: player.move(0, 1, currentRoom);
                 break;
-            case UP: player.move(-1, 0, room);
+            case UP: player.move(-1, 0, currentRoom);
                 break;
-            case DOWN: player.move(1, 0, room);
+            case DOWN: player.move(1, 0, currentRoom);
                 break;
 
             // and finally the quit command
@@ -135,7 +135,7 @@ public class Game {
     // this is called when we need to redraw the room and help menu
     // this happens after going into a menu like for choosing items
     private void redrawMapAndHelp() {
-        room.draw();
+        currentRoom.draw();
         showHelp();
     }
 
@@ -153,17 +153,17 @@ public class Game {
     }
 
     // returns a Teleporter if the player is on it -- otherwise null
-//    private Teleporter checkForTele(){
-//	position playerLocation = player.getPosition();
-//
-//	for (Teleporter teleporter : teles){
-//	    if (playerLocation.equals(teleporter.getPosition())){
-//		return teleporter;
-//	    }
-//	}
-//
-//	return null;
-//    }
+    private Teleporter checkForTele(){
+	Position playerLocation = player.getPosition();
+
+	for (Teleporter teleporter : teles){
+	    if (playerLocation.equals(teleporter.getPosition())){
+		return teleporter;
+	    }
+	}
+
+	return null;
+    }
 
     // check for battles and return false if player has died
     private boolean checkBattles() {
@@ -180,7 +180,7 @@ public class Game {
         // now do the battle
         if (opponent != null) {
             opponent.setBattleActive();
-            return player.fight(opponent, room, enemies);
+            return player.fight(opponent, currentRoom, enemies);
         }
 
         return true;
@@ -196,13 +196,16 @@ public class Game {
             for (Box box : boxes) {
                 box.draw();
             }
+	    for (Teleporter teleporter : teles) {
+		teleporter.draw();
+	    }
             for (Enemy enemy : enemies) {
                 enemy.draw();
             }
             player.draw();
 
             // read a key from the user
-            Terminal.warpCursor(room.getRows() + 1, 0);
+            Terminal.warpCursor(currentRoom.getRows() + 1, 0);//MAKE THIS CURRENT ROOM
             Key key = Terminal.getKey();
             playing = handleKey(key);
 
@@ -211,7 +214,7 @@ public class Game {
 
             // move the enemies
             for (Enemy enemy : enemies) {
-                enemy.walk(room);
+                enemy.walk(currentRoom);
             }
 
             // check for battles
@@ -224,7 +227,7 @@ public class Game {
             Box thingHere = checkForBox();
             if (thingHere != null) {
                 setStatus("Here you find: " + thingHere.getItem().getName());
-            }
+            } //NEW CALL, if(thingHere !=null) CHANGE ROOM, SET ROOM = NEXT ROOM
         }
     }
 }
