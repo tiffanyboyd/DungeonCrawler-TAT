@@ -33,6 +33,7 @@ public class Game {
                          "List items: l",
                          "Equip weapon: w",
                          "Equip armor: a",
+			 "Teleport: t",
                          "Save: s",
                          "Quit: q"
         };
@@ -56,7 +57,7 @@ public class Game {
         Terminal.warpCursor(currentRoom.getRows(), 0);
         System.out.print(mesg);
     }
-
+    
     // code for when the player tries to pickup an item
     private void pickup() {
         Box thing = checkForBox();
@@ -74,6 +75,36 @@ public class Game {
         }
     }
 
+    private void changeRoom() {
+       Room tempRoom1 = world.getRoom1();
+       Teleporter gate = checkForTele();
+       if (gate == null) {
+	   setStatus("There is no teleporter here to jump from...");
+	   Terminal.pause(1.25);
+       }else{
+	   setStatus("Teleporter found, jump commencing in: 3");
+	   Terminal.pause(1);
+	   setStatus("Teleporter found, jump commencing in: 2");
+	   Terminal.pause(1);
+	   setStatus("Teleporter found, jump commencing in: 1");
+	   Terminal.pause(1);
+	   if(currentRoom == tempRoom1){
+		currentRoom = world.getRoom2();
+		redrawMapAndHelp();
+	        player = new Player(currentRoom.getPlayerStart());
+        	boxes = currentRoom.getBoxes();
+        	enemies = currentRoom.getEnemies();
+		teles = currentRoom.getTeleporters(); 
+	   }else{
+		currentRoom = world.getRoom3();
+		redrawMapAndHelp();
+        	player = new Player(currentRoom.getPlayerStart());
+        	boxes = currentRoom.getBoxes();
+        	enemies = currentRoom.getEnemies();
+		teles = currentRoom.getTeleporters(); 
+	   }
+    }
+   }
     // code for when the player tries to drop an item
     private void drop() {
         if (checkForBox() == null) {
@@ -113,7 +144,10 @@ public class Game {
                 player.getInventory().equipArmor();
                 redrawMapAndHelp();
                 break;
-
+	    
+	    case t:
+		changeRoom();
+		break;
             // handle movement
             case LEFT: player.move(0, -1, currentRoom);
                 break;

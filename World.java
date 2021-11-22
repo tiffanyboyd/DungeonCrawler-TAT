@@ -3,27 +3,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
+//This class holds the rooms, assigns them to text files, and switches between them
 public class World{
   private int roomNum=1;
   private Room room1;
   private Room room2;
   private Room room3;
   private ArrayList<Room> rooms;
-  Scanner in;
-  //Room r = new Room();
-//  private ArrayList<String> rooms = new ArrayList<String>();
-//  rooms.add(Room1);
-//  rooms.add(Room2);
-//  rooms.add(Room3);
-  //keeps track of room change?
-  //once the player goes to the next room - increment level
-//  for(String filename: rooms){
-//    World(String filename) throws Exception{
-//      Scanner s = new Scanner(new FileReader(filename));
-    //...
-//    }
-//  }  
+  Scanner in; 
   public World(){
 	rooms = new ArrayList<Room>();
       	Scanner in = new Scanner(System.in);
@@ -65,11 +52,11 @@ public class World{
       return rooms.get(0);
   }
 
-  public Room getNextRoom(){
+  public Room getRoom2(){
       return rooms.get(1);
   }
 
-  public Room getLastRoom(){
+  public Room getRoom3(){
       return rooms.get(2);
   }
 

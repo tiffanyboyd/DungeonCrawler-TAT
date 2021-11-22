@@ -125,7 +125,7 @@ public class Room {
     public Position getPlayerStart() {
 	System.out.println("This is in getPlayer Start, num rows is: " + rows);
         for (int row = 1; row < rows; row++) {
-            for (int col = 1; col < cols; col++) {
+            for (int col = 1;  col < cols; col++) {
                 if (grid[row].charAt(col) == '@') {
                     return new Position(row, col);
                 }
