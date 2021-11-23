@@ -47,7 +47,18 @@ public class Player extends Character {
     public Inventory getInventory() {
         return items;
     }
-    
+
+//    public void setPosition(Position newLocation){
+//	this.start = newLocation;
+//    }
+//    public setRow(int row){
+//	this.row = row;
+//    }
+
+//    public setCol(int col){
+//	this.col = col;
+//    }
+
     public void save(PrintWriter pw){
 	pw.println(getRow());
 	pw.println(getCol());
