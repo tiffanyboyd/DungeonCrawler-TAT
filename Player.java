@@ -13,7 +13,7 @@ public class Player extends Character {
         items = new Inventory(100);
 
         // give them some basic stuff to start with
-        items.addAndEquip(new Item(ItemType.Weapon, "Stun Baton", 5, 12, 7));
+        items.addAndEquip(new Item(ItemType.Weapon, "Stun Baton", 5, 12, 11));
         items.addAndEquip(new Item(ItemType.Armor, "Crew Uniform", 15, 20, 3));
     }
 
