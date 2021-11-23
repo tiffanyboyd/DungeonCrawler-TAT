@@ -10,18 +10,18 @@ public class EnemyGenerator {
     public static Enemy generate(int row, int col) {
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
         enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
-	enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
- 	enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
- 	enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
- 	enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
- 	enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
- 	enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
- 	enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
-	enemies.add(new Enemy("Biomorph", row, col, 20, 5, 3));
-	enemies.add(new Enemy("Mutated Biomorph", row, col, 50, 10, 6));
-	enemies.add(new Enemy("Mutated Biomorph", row, col, 50, 10, 6));
-	enemies.add(new Enemy("Mutated Biomorph", row, col, 50, 10, 6));
-	enemies.add(new Enemy("Mutated Biomorph", row, col, 50, 10, 6));
+	enemies.add(new Enemy("Biomorph", row, col, 20, 10, 3));
+ 	enemies.add(new Enemy("Biomorph", row, col, 20, 10, 3));
+ 	enemies.add(new Enemy("Biomorph", row, col, 20, 10, 3));
+ 	enemies.add(new Enemy("Biomorph", row, col, 20, 10, 3));
+ 	enemies.add(new Enemy("Biomorph", row, col, 20, 10, 3));
+ 	enemies.add(new Enemy("Biomorph", row, col, 20, 10, 3));
+ 	enemies.add(new Enemy("Biomorph", row, col, 20, 10, 3));
+	enemies.add(new Enemy("Biomorph", row, col, 20, 10, 3));
+	enemies.add(new Enemy("Mutated Biomorph", row, col, 50, 15, 6));
+	enemies.add(new Enemy("Mutated Biomorph", row, col, 50, 15, 6));
+	enemies.add(new Enemy("Mutated Biomorph", row, col, 50, 15, 6));
+	enemies.add(new Enemy("Mutated Biomorph", row, col, 50, 15, 6));
 	enemies.add(new Enemy("Heavily Mutated Biomorph", row, col, 80, 20, 10));
 	enemies.add(new Enemy("Heavily Mutated Biomorph", row, col, 80, 20, 10));
 
