@@ -1,7 +1,7 @@
 // Player.java
 
 import ansi_terminal.*;
-
+import java.io.PrintWriter;
 public class Player extends Character {
     private Inventory items;
 
@@ -46,6 +46,17 @@ public class Player extends Character {
 
     public Inventory getInventory() {
         return items;
+    }
+    
+    public void save(PrintWriter pw){
+	pw.println(getRow());
+	pw.println(getCol());
+	pw.println(getHealth());
+	pw.println(getDamage());
+	pw.println(getProtection());
+	pw.println(items.getEquippedWeapon());
+	pw.println(items.getEquippedArmor());
+	pw.println(items);
     }
 }
 

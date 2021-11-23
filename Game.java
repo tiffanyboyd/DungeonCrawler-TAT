@@ -3,6 +3,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import ansi_terminal.*;
+import java.io.PrintWriter;
+//import java.io.FileInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Game {
     Scanner s = new Scanner(System.in);
@@ -35,6 +39,7 @@ public class Game {
                          "Equip armor: a",
 			 "Teleport: t",
                          "Save: s",
+			 "Restore: r",
                          "Quit: q"
         };
         Terminal.setForeground(Color.GREEN);
@@ -148,6 +153,13 @@ public class Game {
 	    case t:
 		changeRoom();
 		break;
+	    case s:
+		save();
+		System.out.print("Game Saved!");
+		break;
+	    //case r:
+	//	restore();
+	//	break;
             // handle movement
             case LEFT: player.move(0, -1, currentRoom);
                 break;
@@ -220,6 +232,21 @@ public class Game {
         return true;
     }
 
+    public void save(){
+	PrintWriter pw;
+	try{
+	   //FileInputStream file = new FileInputStream("Save.txt");
+	   File f = new File("Save.txt");
+	   pw = new PrintWriter(f);
+	   //world.save(pw);
+	   player.save(pw);
+	   //for(enemy e : enemies
+
+	}catch (FileNotFoundException e){
+	   System.out.print("Something went wrong =(");
+	   System.exit(-1);
+	}
+    }
     public void run() {
         // draw these for the first time now
         redrawMapAndHelp();
@@ -239,7 +266,7 @@ public class Game {
             player.draw();
 
             // read a key from the user
-            Terminal.warpCursor(currentRoom.getRows() + 1, 0);//MAKE THIS CURRENT ROOM
+            Terminal.warpCursor(currentRoom.getRows() + 1, 0);
             Key key = Terminal.getKey();
             playing = handleKey(key);
 

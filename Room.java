@@ -15,47 +15,7 @@ public class Room {
     private int rows;
     private int cols;
     private int baseCase;
-    
-/*    public Room loadRoom(int roomNum){
-	System.out.println("this is loadroom");
-	baseCase = 1;
-	Scanner in = new Scanner(System.in);
-	switch(roomNum){
-	     case 1:
-		try{
-		   FileInputStream file = new FileInputStream("Room1.txt");
-		   //File f = new File("Room1.txt");
-		   in = new Scanner(file);
-		}catch (FileNotFoundException e){
-			System.out.print("Something went wrong :(");
-			System.exit(-1);
-		}
-		break;
-	     case 2:
-		try{
-		   FileInputStream file = new FileInputStream("Room2.txt");
-	//	   File f = new File("Room2.txt");
-		   in = new Scanner(file);
-		}catch (FileNotFoundException e){
-			System.out.print("Something went wrong :(");
-			System.exit(-1);
-		}
-		break;
-	     case 3:
-		try{
-		  // File f = new File("Room3.txt");
-		   FileInputStream file = new FileInputStream("Room3.txt");
-		   in = new Scanner(file);
-		}catch (FileNotFoundException e){
-			System.out.print("Something went wrong :,(");
-			System.exit(-1);
-		}
-		break;
-	}
-	Room room = new Room(in, baseCase);
-	return room;
- } */  
-
+     
     public Room(Scanner s) {
       rows = s.nextInt();
       cols = s.nextInt();
@@ -123,7 +83,6 @@ public class Room {
       }
     // returns the player's strting location in this room
     public Position getPlayerStart() {
-	System.out.println("This is in getPlayer Start, num rows is: " + rows);
         for (int row = 1; row < rows; row++) {
             for (int col = 1;  col < cols; col++) {
                 if (grid[row].charAt(col) == '@') {
