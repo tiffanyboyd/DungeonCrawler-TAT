@@ -96,7 +96,8 @@ public class Game {
 	   if(currentRoom == tempRoom1){
 		currentRoom = world.getRoom2();
 		redrawMapAndHelp();
-	        player = new Player(currentRoom.getPlayerStart());
+	        //player = new Player(currentRoom.getPlayerStart());
+		player.setPosition(currentRoom.getPlayerStartRow(), currentRoom.getPlayerStartCol());
         	boxes = currentRoom.getBoxes();
         	enemies = currentRoom.getEnemies();
 		teles = currentRoom.getTeleporters(); 

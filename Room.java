@@ -38,6 +38,7 @@ public class Room {
 	 //rows++;
 	 //cols++;
 	 row++;
+	 //System.out.print(grid[row]);
 	//grid.add(desc + next + "\n");
         // next = s.nextLine();
        }
@@ -92,6 +93,26 @@ public class Room {
         }
         System.out.println("null :(");
         return null;
+    }
+    public int getPlayerStartRow() {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1;  col < cols; col++) {
+                if (grid[row].charAt(col) == '@') {
+                    return row;
+                }
+            }
+        }
+        return 0;
+    }
+    public int getPlayerStartCol() {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1;  col < cols; col++) {
+                if (grid[row].charAt(col) == '@') {
+                    return col;
+                }
+            }
+        }
+        return 0;
     }
 
     // returns a set of item boxes for this map, this is here because it depends on
