@@ -1,6 +1,6 @@
 // Room.java
 // provides code for the drawing of a room
-// also provides starting locations for the player, boxes, and enemies
+// also provides starting locations for the player, boxes, teleporters and enemies
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -15,19 +15,10 @@ public class Room {
     private int rows;
     private int cols;
     private int baseCase;
-     
+    //this constructor takes in a scanner assigned to a file and reads it into an Array the rest of the game can work with, also gets its rows and cols
     public Room(Scanner s) {
       rows = s.nextInt();
       cols = s.nextInt();
-//	rows = 0;
-//	cols = 0;
-//	while(s.next() != "."){
-//	rows++;
-//	cols++;
-//	}
-        // the actual room geometry
-        // the i cells refer to where an item should be placed at
-       desc ="";
        //int size = rows * cols; 
        //String next = s.nextLine();
        grid = new String[rows];
@@ -38,10 +29,11 @@ public class Room {
 	 //rows++;
 	 //cols++;
 	 row++;
-	 //System.out.print(grid[row]);
+	 //System.out.println(grid[row]);
 	//grid.add(desc + next + "\n");
         // next = s.nextLine();
        }
+	System.out.println(grid);
         /*    new String[] {
             "##################                ######################    ",
             "##              ##                ##      i           ##    ",
@@ -94,6 +86,7 @@ public class Room {
         System.out.println("null :(");
         return null;
     }
+    // returns the players starting location in this room in the form of an int
     public int getPlayerStartRow() {
         for (int row = 1; row < rows; row++) {
             for (int col = 1;  col < cols; col++) {
@@ -104,6 +97,7 @@ public class Room {
         }
         return 0;
     }
+    // returns the players starting location in this room in the form of an int
     public int getPlayerStartCol() {
         for (int row = 1; row < rows; row++) {
             for (int col = 1;  col < cols; col++) {
@@ -130,8 +124,7 @@ public class Room {
         return boxes;
     }
 
-    //THIS IS NEW CODE IF EVERYTHING BREAKS ITS BECAUSE OF THIS
-    //Should return a set of teleporters for this map, depends on room geometry
+    //Returns a set of teleporters for this map, depends on room geometry
     public ArrayList<Teleporter> getTeleporters() {
 	ArrayList<Teleporter> teles = new ArrayList<Teleporter>();
 	for (int row = 1; row < rows; row++) {
