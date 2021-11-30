@@ -2,6 +2,7 @@
 
 import ansi_terminal.*;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 public class Player extends Character {
     private Inventory items;
 
@@ -60,6 +61,7 @@ public class Player extends Character {
 //    }
 
     public void save(PrintWriter pw){
+        ArrayList listOfItems = items.getInventoryList();
 	pw.println(getRow());
 	pw.println(getCol());
 	pw.println(getHealth());
@@ -67,7 +69,12 @@ public class Player extends Character {
 	pw.println(getProtection());
 	pw.println(items.getEquippedWeapon());
 	pw.println(items.getEquippedArmor());
-	pw.println(items);
+	int i = 0;
+	while(i < listOfItems.size()){
+		pw.println(listOfItems.get(i));
+		i++;
+	}
+	pw.close();
     }
 }
 

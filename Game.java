@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import ansi_terminal.*;
 import java.io.PrintWriter;
-//import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -236,9 +236,9 @@ public class Game {
     public void save(){
 	PrintWriter pw;
 	try{
-	   //FileInputStream file = new FileInputStream("Save.txt");
-	   File f = new File("Save.txt");
-	   pw = new PrintWriter(f);
+	   FileOutputStream file = new FileOutputStream("Save.txt");
+	   //File f = new File("Save.txt");
+	   pw = new PrintWriter(file);
 	   //world.save(pw);
 	   player.save(pw);
 	   //for(enemy e : enemies

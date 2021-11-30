@@ -31,6 +31,10 @@ public class Inventory {
             return true;
         }
     }
+ 
+    public ArrayList getInventoryList(){
+	return items;
+    }
 
     // this method not only adds the item, but equips it into the correct slot
     // it is used for setting up the player's starting gear
