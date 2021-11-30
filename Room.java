@@ -19,6 +19,7 @@ public class Room {
     public Room(Scanner s) {
       rows = s.nextInt();
       cols = s.nextInt();
+      s.nextLine();
 //	rows = 0;
 //	cols = 0;
 //	while(s.next() != "."){
@@ -170,8 +171,8 @@ public class Room {
     // draws the map to the screen
     public void draw() {
         Terminal.clear();
-        for (int row = 1; row < rows; row++) {
-            for (int col = 1; col < cols; col++) {
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
 		//System.out.print("checking row: " + row + "and col: " + col + " now \n\r");
                 char cell = grid[row].charAt(col);
                 if (cell == '#') {
