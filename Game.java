@@ -242,7 +242,11 @@ public class Game {
 	   //world.save(pw);
 	   player.save(pw);
 	   //for(enemy e : enemies
-
+     //ArrayList inventory = new ArrayList<>();
+     //for(Item i: player.getInventory()){
+     //   player.getInventory().save(pw);
+     //}
+     pw.close();
 	}catch (FileNotFoundException e){
 	   System.out.print("Something went wrong =(");
 	   System.exit(-1);
