@@ -15,8 +15,10 @@ public class Room {
     private int rows;
     private int cols;
     private int baseCase;
+    private int roomNumber;
     //this constructor takes in a scanner assigned to a file and reads it into an Array the rest of the game can work with, also gets its rows and cols
-    public Room(Scanner s) {
+    public Room(Scanner s, int roomNumber) {
+      this.roomNumber = roomNumber;
       rows = s.nextInt();
       cols = s.nextInt();
        //int size = rows * cols; 
@@ -158,6 +160,10 @@ public class Room {
 
     public int getCols() {
         return cols;
+    }
+
+    public int getRoomNumber() {
+	return roomNumber;
     }
 
     // draws the map to the screen
