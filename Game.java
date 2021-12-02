@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Game {
+    int numEnemies;
+    int numBoxes;
+    int numTeles;
     Scanner s = new Scanner(System.in);
     private Room currentRoom;
     private World world;
@@ -24,7 +27,7 @@ public class Game {
         player = new Player(currentRoom.getPlayerStart());
         boxes = currentRoom.getBoxes();
         enemies = currentRoom.getEnemies();
-	teles = currentRoom.getTeleporters(); //MAKE A GET TELEPORTER METHOD
+	teles = currentRoom.getTeleporters();
     }
 
     // prints a help menu to the left of the map
@@ -240,8 +243,20 @@ public class Game {
 	   //File f = new File("Save.txt");
 	   pw = new PrintWriter(file);
 	   //world.save(pw);
+	   currentRoom.save(pw);
 	   player.save(pw);
-	   //for(enemy e : enemies
+	   numEnemies = enemies.size();
+	   for(int i=0; i<numEnemies; i++){
+		enemies.get(i).save(pw);
+	   }
+	   numBoxes = boxes.size();
+	   for(int i=0; i<numBoxes; i++){
+		boxes.get(i).save(pw);
+	   }
+	   numTeles = teles.size();
+	   for(int i=0; i<numTeles; i++){
+		teles.get(i).save(pw);
+	   }
      //ArrayList inventory = new ArrayList<>();
      //for(Item i: player.getInventory()){
      //   player.getInventory().save(pw);

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.PrintWriter;
 import ansi_terminal.*;
 
 public class Room {
@@ -22,69 +23,14 @@ public class Room {
       rows = s.nextInt();
       cols = s.nextInt();
       s.nextLine();
-//	rows = 0;
-//	cols = 0;
-//	while(s.next() != "."){
-//	rows++;
-//	cols++;
-//	}
-        // the actual room geometry
-        // the i cells refer to where an item should be placed at
        desc ="";
-       //int size = rows * cols; 
-       //String next = s.nextLine();
        grid = new String[rows];
        int row = 0;
-      // while (!next.equals(".")){
 	while(row < rows){
          grid[row]= s.nextLine();
-	 //rows++;
-	 //cols++;
 	 row++;
-	 //System.out.println(grid[row]);
-	//grid.add(desc + next + "\n");
-        // next = s.nextLine();
        }
 	System.out.println(grid);
-        /*    new String[] {
-            "##################                ######################    ",
-            "##              ##                ##      i           ##    ",
-            "##  @           ###########       ##        *         ##    ",
-            "##                       ##       ##                  ##    ",
-            "##              #######  ##       ##################  ##    ",
-            "##              ##   ##  ##                       ##  ##    ",
-            "##################   ##  ##################       ##  ##    ",
-            "                     ##                  ##       ##  ##    ",
-            "                     ##   *  i           ##       ##  ##    ",
-            "                     ##                  ##       ##  ##    ",
-            "                     ##############  ######       ##  ##    ",
-            "                                 ##  ##           ##  ##    ",
-            "                                 ##  ##           ##  ##    ",
-            "                       ############  ###############  ######",
-            "                       ##                                 ##",
-            "                       ##                                 ##",
-            "    #####################                  *              ##",
-            "    ##                                                    ##",
-            "    ##  #################                                 ##",
-            "    ##  ##             ##                                 ##",
-            "    ##  ##             #################  ##################",
-            "    ##  ##                            ##  ##                ",
-            "    ##  ##                            ##  ##                ",
-            "    ##  ##                       #######  #######           ",
-            "    ##  ##                       ##            ##           ",
-            "######  ####                     ##  i  *      ##           ",
-            "##        ##                     ##            ##           ",
-            "## i  *   ##                     ################           ",
-            "##        ##                                                ",
-            "############                                                "
-        };
-    }
-*/
-//    void persist(printWriter pw){
-//        pw.println(rows);
-//        pw.println(cols);
-//        pw.println(desc);
-//        pw.println(".");
       }
     // returns the player's strting location in this room
     public Position getPlayerStart() {
@@ -199,6 +145,28 @@ public class Room {
     // returns if a given cell in the map is walkable or not
     public boolean canGo(int row, int col) {
         return grid[row].charAt(col) != '#';
+    }
+    
+    public void save(PrintWriter pw){
+	 pw.println(rows);
+	 pw.println(cols);
+	 for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+		//System.out.print("checking row: " + row + "and col: " + col + " now \n\r");
+                char cell = grid[row].charAt(col);
+                if (cell == '#') {
+                    // a unicode block symbol
+                    pw.print('\u2588');
+                } else {
+                    // whatever else, just draw a blank (we DONT draw starting items from map)
+                    pw.print(' ');
+                }
+            }
+
+            //pw.print("\n\r");
+	    pw.println();
+        }
+	pw.println('.');
     }
 }
 

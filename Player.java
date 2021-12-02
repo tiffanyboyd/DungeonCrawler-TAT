@@ -74,7 +74,7 @@ public class Player extends Character {
 		pw.println(listOfItems.get(i));
 		i++;
 	}
-	pw.close();
+//	pw.close();
     }
 }
 
