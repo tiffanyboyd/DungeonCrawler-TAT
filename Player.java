@@ -18,13 +18,13 @@ public class Player extends Character {
         items.addAndEquip(new Item(ItemType.Armor, "Crew Uniform", 15, 20, 3));
     }
 
-    public Player(Scanner s){
-	row = s.nextInt();
-	col = s.nextInt();
-	hp = s.nextInt();
-	equippedWeapon = s.nextInt();
+//    public Player(Scanner s){
+//	row = s.nextInt();
+//	col = s.nextInt();
+//	hp = s.nextInt();
+//	equippedWeapon = s.nextInt();
 	
-    }
+  //  }
 
     @Override
     public int getDamage() {
