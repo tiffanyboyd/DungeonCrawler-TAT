@@ -5,20 +5,28 @@ import java.util.ArrayList;
 import ansi_terminal.*;
 
 
-/*
+/**
+* Character class
 */
 public abstract class Character extends Entity {
     // the characters health points
     private int hp;
 
-    /*
+    /**
+    * Constructs a character and saves location and color. Sets the health of character
+    * @param row
+    * @param col
+    * @param display
+    * @param color
+    * @param hp
     */
     public Character(int row, int col, char display, Color color, int hp) {
         super(row, col, display, color);
         this.hp = hp;
     }
 
-    /*
+    /**
+    * Gets the current health od the character.
     */
     // get the hp, damage, protection and name of character
     public int getHealth() {
@@ -29,10 +37,11 @@ public abstract class Character extends Entity {
     public abstract String getName();
 
     
-    /*
+    /**
+    *
     */
     // do damage to another player, returns if they died
-    private boolean dealDamage(Character other, Room room) {
+  row  private boolean dealDamage(Character other, Room room) {
         // this character does damage to the other character
         int damageDone = getDamage() - other.getProtection();
 

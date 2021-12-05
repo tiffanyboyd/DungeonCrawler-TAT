@@ -1,6 +1,7 @@
 // Enemy.java
 
 import java.util.Random;
+import java.io.PrintWriter;
 import ansi_terminal.*;
 
 /*
@@ -78,7 +79,17 @@ public class Enemy extends Character {
                     break;
             }
         }
+     }
+     public void save(PrintWriter pw){
+	pw.println(getName());
+	pw.println(getRow());
+	pw.println(getCol());
+	pw.println(getHealth());
+	pw.println(getDamage());
+	pw.println(getProtection());
     }
+
+    
 }
 
 

@@ -18,6 +18,14 @@ public class Player extends Character {
         items.addAndEquip(new Item(ItemType.Armor, "Crew Uniform", 15, 20, 3));
     }
 
+//    public Player(Scanner s){
+//	row = s.nextInt();
+//	col = s.nextInt();
+//	hp = s.nextInt();
+//	equippedWeapon = s.nextInt();
+	
+  //  }
+
     @Override
     public int getDamage() {
         Item weapon = items.getEquippedWeapon();
@@ -65,8 +73,8 @@ public class Player extends Character {
 	pw.println(getRow());
 	pw.println(getCol());
 	pw.println(getHealth());
-	pw.println(getDamage());
-	pw.println(getProtection());
+//	pw.println(getDamage());
+//	pw.println(getProtection());
 	pw.println(items.getEquippedWeapon());
 	pw.println(items.getEquippedArmor());
 	int i = 0;
@@ -74,7 +82,7 @@ public class Player extends Character {
 		pw.println(listOfItems.get(i));
 		i++;
 	}
-	pw.close();
+//	pw.close();
     }
 }
 
