@@ -4,15 +4,22 @@ import java.util.ArrayList;
 
 import ansi_terminal.*;
 
+
+/*
+*/
 public abstract class Character extends Entity {
     // the characters health points
     private int hp;
 
+    /*
+    */
     public Character(int row, int col, char display, Color color, int hp) {
         super(row, col, display, color);
         this.hp = hp;
     }
 
+    /*
+    */
     // get the hp, damage, protection and name of character
     public int getHealth() {
         return hp;
@@ -21,6 +28,9 @@ public abstract class Character extends Entity {
     public abstract int getProtection();
     public abstract String getName();
 
+    
+    /*
+    */
     // do damage to another player, returns if they died
     private boolean dealDamage(Character other, Room room) {
         // this character does damage to the other character
@@ -52,6 +62,8 @@ public abstract class Character extends Entity {
         }
     }
 
+    /*
+    */
     // this method performs one round of battle between two characters
     // return false if the player has died aas a result
     public boolean fight(Character other, Room room, ArrayList<Enemy> enemies) {
