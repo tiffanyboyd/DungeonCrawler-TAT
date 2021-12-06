@@ -20,7 +20,7 @@ public class Game {
     private ArrayList<Enemy> enemies;
     private ArrayList<Teleporter> teles;
 
-    public Game() {
+   public Game() {
 	world = new World();
 	currentRoom = world.getRoom1();
 	currentRoom.draw();
@@ -83,6 +83,9 @@ public class Game {
         }
     }
 
+    /**
+    * Changes the room the player is in.
+    */
     private void changeRoom() {
        Room tempRoom1 = world.getRoom1();
        Teleporter gate = checkForTele();
@@ -202,6 +205,9 @@ public class Game {
         return null;
     }
 
+    /**
+    * Returns a Teleporter if the player is on it.
+    */
     // returns a Teleporter if the player is on it -- otherwise null
     private Teleporter checkForTele(){
 	Position playerLocation = player.getPosition();
@@ -236,6 +242,9 @@ public class Game {
         return true;
     }
 
+    /**
+    * Method used to save the players entire game.
+    */
     public void save(){
 	PrintWriter pw;
 	try{
@@ -312,4 +321,3 @@ public class Game {
         }
     }
 }
-

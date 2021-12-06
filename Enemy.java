@@ -4,7 +4,8 @@ import java.util.Random;
 import java.io.PrintWriter;
 import ansi_terminal.*;
 
-/*
+/**
+* 
 */
 public class Enemy extends Character {
     private String name;
@@ -51,8 +52,6 @@ public class Enemy extends Character {
         battleActive = true;
     }
 
-    /*
-    */
     // randomly move this enemy in the room
     public void walk(Room room) {
         // if a battle is active with this enemy, they DONT walk right after
@@ -80,6 +79,11 @@ public class Enemy extends Character {
             }
         }
      }
+
+     /**
+     * Saves the enemy stats and writes texts to file.
+     * @param pw PrintWriter used to write text to a file.
+     */
      public void save(PrintWriter pw){
 	pw.println(getName());
 	pw.println(getRow());

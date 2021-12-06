@@ -14,11 +14,11 @@ public abstract class Character extends Entity {
 
     /**
     * Constructs a character and saves location and color. Sets the health of character
-    * @param row
-    * @param col
-    * @param display
-    * @param color
-    * @param hp
+    * @param row row location
+    * @param col coloumn location
+    * @param display the character used to represent the Character
+    * @param color the color used to represent character
+    * @param hp the health of the character
     */
     public Character(int row, int col, char display, Color color, int hp) {
         super(row, col, display, color);
@@ -38,10 +38,12 @@ public abstract class Character extends Entity {
 
     
     /**
-    *
+    * Calculates the damage of the player and returns true if player has died.
+    * @param other the character other than player?
+    * @param room 
     */
     // do damage to another player, returns if they died
-  row  private boolean dealDamage(Character other, Room room) {
+    private boolean dealDamage(Character other, Room room) {
         // this character does damage to the other character
         int damageDone = getDamage() - other.getProtection();
 
@@ -71,7 +73,12 @@ public abstract class Character extends Entity {
         }
     }
 
-    /*
+    /**
+    * Performs one round of battle between two characters and returns false if the
+    * playerhas died.
+    * @param other character other than player
+    * @param room current room
+    * @param enemies the arraylist of enemies
     */
     // this method performs one round of battle between two characters
     // return false if the player has died aas a result
