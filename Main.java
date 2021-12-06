@@ -11,7 +11,16 @@ public class Main {
 	String name = in.nextLine();
 	System.out.println("Are you an (A)lien or a (H)uman");
 	String race = in.next();
-        // put termain in raw mode
+  System.out.println("Would you like to load a previous game? ( y/n )");
+  String choice = in.nextLine();
+  if(choice.equals("y")){
+      Game game = new Game(in);
+  }else if (!choice.equals("n")){
+      System.out.print("Please type either 'y' or 'n'");
+  }
+
+
+        // put terminal in raw mode
         Terminal.rawMode();
 	//ask if they want to continue an old game or start a new one
 	//if continue{
