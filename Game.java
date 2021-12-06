@@ -31,10 +31,13 @@ public class Game {
     }
     public Game(Scanner in) {
 	world = new World();
-	currentRoom = new Room(in);
+//	currentRoom = new Room(in);
 	currentRoom.draw();
 	player = new Player(in);
 	//loop for enemies
+   for(Enemy enemy: enemies){
+       enemy = new Enemy(in);
+   }
 	//loop for boxes
 	//teleporter (only ever one per room)
     }
@@ -240,7 +243,7 @@ public class Game {
             opponent.setBattleActive();
             return player.fight(opponent, currentRoom, enemies);
         }
-	
+/*	
 	Boss opponentB = null;
 	for (Boss boss : bosses) {
 	   if (playerLocation.isAdjacent(boss.getPosition())) {
@@ -253,7 +256,7 @@ public class Game {
 	    opponentB.setBossBattleActive();
 	    return player.fightBoss(opponentB, currentRoom, bosses);
 	}
-
+*/
         return true;
     }
 

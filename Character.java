@@ -121,7 +121,7 @@ public abstract class Character extends Entity {
         }
     }
 
-    public boolean fightBoss(Character other, Room room, ArrayList<Boss> bosses) {
+/*    public boolean fightBoss(Character other, Room room, ArrayList<Boss> bosses) {
         // do damage to them first
         boolean killed = dealDamage(other, room);
         if (killed) {
@@ -142,6 +142,6 @@ public abstract class Character extends Entity {
         System.out.printf("Press any key to return...\n\r");
         Terminal.getKey();
         return true;
-    }
+    }*/
 }
 

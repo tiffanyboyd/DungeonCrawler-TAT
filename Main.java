@@ -12,7 +12,7 @@ public class Main {
 	System.out.println("Are you an (A)lien or a (H)uman");
 	String race = in.next();
   System.out.println("Would you like to load a previous game? ( y/n )");
-  String choice = in.nextLine();
+  String choice = in.next();
   if(choice.equals("y")){
       Game game = new Game(in);
   }else if (!choice.equals("n")){

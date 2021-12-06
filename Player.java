@@ -29,7 +29,7 @@ public class Player extends Character {
 	int i = 0;
 	while(i<2){
 		String iType = s.next();
-		ItemType type;
+    ItemType type = null;
 		switch(iType){
 			case("Weapon"):
 				type = ItemType.Weapon;
@@ -51,7 +51,7 @@ public class Player extends Character {
 	String next = s.nextLine();
 	while (!next.equals(".")) {
 		String iType = s.next();
-		ItemType type;
+		ItemType type = null;
 		switch(iType){
 			case("Weapon"):
 				type = ItemType.Weapon;
