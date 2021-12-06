@@ -24,4 +24,13 @@ public class Teleporter extends Entity{
 	pw.println(getCol());
     }
 
+    /**
+    *Reads in teleporters from a file
+    * @param in Scanner used to read in files
+    */public Teles(Scanner in){
+      row = in.nextInt();
+      col = in.nextInt();
+    }
+ 
+
 }

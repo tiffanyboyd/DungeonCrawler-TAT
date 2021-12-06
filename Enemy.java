@@ -92,6 +92,12 @@ public class Enemy extends Character {
 	pw.println(getDamage());
 	pw.println(getProtection());
     }
+    
+
+    /**
+    * Reads in Enemy stats from a file
+    * @param in Scanner used to read in file
+    */
     public Enemy(Scanner in){
       super(0,0,'*',Color.BLUE,50);
       name = in.next();
