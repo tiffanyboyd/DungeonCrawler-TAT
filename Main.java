@@ -11,7 +11,20 @@ public class Main {
 	String name = in.nextLine();
 	System.out.println("Are you an (A)lien or a (H)uman");
 	String race = in.next();
-        // put termain in raw mode
+  while(!(race.equals("A") || race.equals("H"))){
+      System.out.println("Please type 'A' or 'H'");
+      race = in.next();
+  }
+  System.out.println("Would you like to load a previous game? ( y/n )");
+  String choice = in.next();
+  if(choice.equals("y")){
+      Game game = new Game(in);
+  }else if (!choice.equals("n")){
+      System.out.print("Please type either 'y' or 'n'");
+  }
+
+
+        // put terminal in raw mode
         Terminal.rawMode();
 	//ask if they want to continue an old game or start a new one
 	//if continue{
@@ -24,12 +37,9 @@ public class Main {
 	if(race.equals("H")){
 		System.out.print("As a human normally you would be above this kind of work but the superiors citied their contract and you have no choice but to follow.\n\r");
 		Terminal.pause(1);
-	}else if(race.equals("A")){
+	}else{
 		System.out.print("As an alien this kind of dirty, risky work is something you're used to being forced to do, hopefully this is the last time.\n\r");
 		Terminal.pause(1);
-	}else{
-		System.out.print("Your species is not recognized in our databases, please select one of the options.\n\r");
-		System.exit(-1);
 	}
     	System.out.print("As your shuttle docs a message from the crew patches through to your monitor:\n\r");
     	Terminal.pause(1);

@@ -1,5 +1,5 @@
 // Enemy.java
-
+import java.util.Scanner;
 import java.util.Random;
 import java.io.PrintWriter;
 import ansi_terminal.*;
@@ -92,7 +92,15 @@ public class Enemy extends Character {
 	pw.println(getDamage());
 	pw.println(getProtection());
     }
-
+    public Enemy(Scanner in){
+      super(0,0,'*',Color.BLUE,50);
+      name = in.next();
+      row = in.nextInt();
+      col = in.nextInt();
+      hp = in.nextInt();
+      damage = in.nextInt();
+      protection = in.nextInt();
+    }
     
 }
 
