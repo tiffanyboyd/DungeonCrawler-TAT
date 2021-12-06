@@ -28,7 +28,8 @@ public class Main {
 		System.out.print("As an alien this kind of dirty, risky work is something you're used to being forced to do, hopefully this is the last time.\n\r");
 		Terminal.pause(1);
 	}else{
-		System.out.print("Your species is not recognized in our databases, please select one of the options.\n\r");
+		System.out.print("Your species is not recognized in our databases, please select one of the options.\n\r");//THIS NEEDS TO GO HIGHER
+		Terminal.pause(1);
 		System.exit(-1);
 	}
     	System.out.print("As your shuttle docs a message from the crew patches through to your monitor:\n\r");

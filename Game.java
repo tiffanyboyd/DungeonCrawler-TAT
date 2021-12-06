@@ -29,7 +29,15 @@ public class Game {
         enemies = currentRoom.getEnemies();
 	teles = currentRoom.getTeleporters();
     }
-
+    public Game(Scanner in) {
+	world = new World();
+	currentRoom = new Room(in);
+	currentRoom.draw();
+	player = new Player(in);
+	//loop for enemies
+	//loop for boxes
+	//teleporter (only ever one per room)
+    }
     // prints a help menu to the left of the map
     private void showHelp() {
         String[] cmds = {"Commands:",
@@ -232,6 +240,19 @@ public class Game {
             opponent.setBattleActive();
             return player.fight(opponent, currentRoom, enemies);
         }
+	
+	Boss opponentB = null;
+	for (Boss boss : bosses) {
+	   if (playerLocation.isAdjacent(boss.getPosition())) {
+		opponentB = boss;
+	   }
+	}
+
+	//do the boss battle
+	if (opponentB != null) {
+	    opponentB.setBossBattleActive();
+	    return player.fightBoss(opponentB, currentRoom, bosses);
+	}
 
         return true;
     }

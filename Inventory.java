@@ -32,7 +32,7 @@ public class Inventory {
         }
     }
  
-    public ArrayList getInventoryList(){
+    public ArrayList<Item> getInventoryList(){
 	return items;
     }
 

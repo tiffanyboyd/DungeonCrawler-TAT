@@ -2,6 +2,7 @@
 
 import ansi_terminal.*;
 import java.io.PrintWriter;
+import java.util.Scanner;
 import java.util.ArrayList;
 public class Player extends Character {
     private Inventory items;
@@ -18,13 +19,58 @@ public class Player extends Character {
         items.addAndEquip(new Item(ItemType.Armor, "Crew Uniform", 15, 20, 3));
     }
 
-//    public Player(Scanner s){
-//	row = s.nextInt();
-//	col = s.nextInt();
-//	hp = s.nextInt();
-//	equippedWeapon = s.nextInt();
-	
-  //  }
+    public Player(Scanner s){
+	super(0, 0, '@', Color.CYAN, 50);
+	row = s.nextInt();
+	col = s.nextInt();
+	hp = s.nextInt();
+	items = new Inventory(100);
+	//ItemType type = s.next();
+	int i = 0;
+	while(i<2){
+		String iType = s.next();
+		ItemType type;
+		switch(iType){
+			case("Weapon"):
+				type = ItemType.Weapon;
+				break;
+			case("Armor"):
+				type = ItemType.Armor;
+				break;
+			case("Other"):
+				type = ItemType.Other;
+				break;
+		}
+		String name = s.nextLine();
+		int weight = s.nextInt();
+		int value = s.nextInt();
+		int strength = s.nextInt();
+		items.addAndEquip(new Item(type, name, weight, value, strength));
+		i++;
+	}
+	String next = s.nextLine();
+	while (!next.equals(".")) {
+		String iType = s.next();
+		ItemType type;
+		switch(iType){
+			case("Weapon"):
+				type = ItemType.Weapon;
+				break;
+			case("Armor"):
+				type = ItemType.Armor;
+				break;
+			case("Other"):
+				type = ItemType.Other;
+				break;
+		}
+		String name = s.nextLine();
+		int weight = s.nextInt();
+		int value = s.nextInt();
+		int strength = s.nextInt();
+		items.add(new Item(type, name, weight, value, strength));
+		next = s.nextLine();
+	}	
+    }
 
     @Override
     public int getDamage() {
@@ -69,7 +115,7 @@ public class Player extends Character {
 //    }
 
     public void save(PrintWriter pw){
-        ArrayList listOfItems = items.getInventoryList();
+        ArrayList<Item> listOfItems = items.getInventoryList();
 	pw.println(getRow());
 	pw.println(getCol());
 	pw.println(getHealth());
@@ -79,9 +125,14 @@ public class Player extends Character {
 	pw.println(items.getEquippedArmor());
 	int i = 0;
 	while(i < listOfItems.size()){
-		pw.println(listOfItems.get(i));
+		pw.println(listOfItems.get(i).getType());
+		pw.println(listOfItems.get(i).getName());
+		pw.println(listOfItems.get(i).getWeight());
+		pw.println(listOfItems.get(i).getValue());
+		pw.println(listOfItems.get(i).getStrength());
 		i++;
 	}
+	pw.println(".");
 //	pw.close();
     }
 }
