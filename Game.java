@@ -33,15 +33,18 @@ public class Game {
     }
     public Game(Scanner in) {
 	world = new World();
-//	currentRoom = new Room(in);
+	currentRoom = new Room(in);
 	currentRoom.draw();
 	player = new Player(in);
 	//loop for enemies
-   for(Enemy enemy: enemies){
-       enemy = new Enemy(in);
-   }
+        for(Enemy enemy: enemies){//CHANGE THIS TO LOOP ON NEXT LINE BEING A .
+           enemy = new Enemy(in);
+        }
 	//loop for boxes
 	//teleporter (only ever one per room)
+	for(Boss boss : bosses){
+	    boss = new Boss(in);
+	}
     }
     // prints a help menu to the left of the map
     private void showHelp() {
@@ -126,7 +129,8 @@ public class Game {
 	   }else{
 		currentRoom = world.getRoom3();
 		redrawMapAndHelp();
-        	player = new Player(currentRoom.getPlayerStart());
+        	//player = new Player(currentRoom.getPlayerStart());
+		player.setPosition(currentRoom.getPlayerStartRow(), currentRoom.getPlayerStartCol());
         	boxes = currentRoom.getBoxes();
         	enemies = currentRoom.getEnemies();
 		bosses = currentRoom.getBosses();
@@ -295,6 +299,10 @@ public class Game {
 	   numTeles = teles.size();
 	   for(int i=0; i<numTeles; i++){
 		teles.get(i).save(pw);
+	   }
+	   int numBosses = bosses.size();
+	   for(int i =0; i<numBosses; i++){
+		 bosses.get(i).save(pw);
 	   }
      //ArrayList inventory = new ArrayList<>();
      //for(Item i: player.getInventory()){
