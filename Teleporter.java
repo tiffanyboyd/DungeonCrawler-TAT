@@ -30,6 +30,7 @@ public class Teleporter extends Entity{
     * @param in Scanner used to read in files
     */
     public void Teles(Scanner in){
+      super(0, 0, '^', Color.CYAN);
       row = in.nextInt();
       col = in.nextInt();
     }
