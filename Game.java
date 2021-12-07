@@ -41,6 +41,9 @@ public class Game {
            enemy = new Enemy(in);
         }
 	//loop for boxes
+	for(Box box : boxes){
+	   box = new Box(in);
+	}
 	//teleporter (only ever one per room)
 	for(Boss boss : bosses){
 	    boss = new Boss(in);
@@ -291,15 +294,21 @@ public class Game {
 	   numEnemies = enemies.size();
 	   for(int i=0; i<numEnemies; i++){
 		enemies.get(i).save(pw);
+		pw.println(" ");
 	   }
+	   pw.println(".");
 	   numBoxes = boxes.size();
 	   for(int i=0; i<numBoxes; i++){
 		boxes.get(i).save(pw);
+		pw.println(" ");
 	   }
+	   pw.println(".");
 	   numTeles = teles.size();
 	   for(int i=0; i<numTeles; i++){
 		teles.get(i).save(pw);
+		pw.println(" ");
 	   }
+	   pw.println(".");
 	   int numBosses = bosses.size();
 	   for(int i =0; i<numBosses; i++){
 		 bosses.get(i).save(pw);
