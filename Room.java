@@ -200,7 +200,6 @@ public class Room {
         Terminal.clear();
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-		//System.out.print("checking row: " + row + "and col: " + col + " now \n\r");
                 char cell = grid[row].charAt(col);
                 if (cell == '#') {
                     // a unicode block symbol
@@ -233,7 +232,6 @@ public class Room {
 	 pw.println(cols);
 	 for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-		//System.out.print("checking row: " + row + "and col: " + col + " now \n\r");
                 char cell = grid[row].charAt(col);
                 if (cell == '#') {
                     // a unicode block symbol
@@ -244,7 +242,6 @@ public class Room {
                 }
             }
 
-            //pw.print("\n\r");
 	    pw.println();
         }
     }

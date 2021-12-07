@@ -19,7 +19,7 @@ public abstract class Character extends Entity {
     * @param hp the health of the character
     */
     protected int hp;
-    protected int row;//these were added, compiled no prob might give runtime errors
+    protected int row;
     protected int col;
     public Character(int row, int col, char display, Color color, int hp) {
         super(row, col, display, color);

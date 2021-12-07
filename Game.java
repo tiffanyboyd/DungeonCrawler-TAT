@@ -49,7 +49,7 @@ public class Game {
 	//loop for enemies
 	String next = in.next();
 	enemies = new ArrayList<Enemy>();
-        while(!next.equals(".")){//CHANGE THIS TO LOOP ON NEXT LINE BEING A .
+        while(!next.equals(".")){
            Enemy enemy = new Enemy(in, next);
 	   enemies.add(enemy);
 	   next = in.next();
@@ -149,7 +149,6 @@ public class Game {
 		currentRoom = world.getRoom2();
 		currentRoom.setRoomNumber(2);
 		redrawMapAndHelp();
-	        //player = new Player(currentRoom.getPlayerStart());
 		player.setPosition(currentRoom.getPlayerStartRow(), currentRoom.getPlayerStartCol());
         	boxes = currentRoom.getBoxes();
         	enemies = currentRoom.getEnemies();
@@ -158,7 +157,6 @@ public class Game {
 	   }else{
 		currentRoom = world.getRoom3();
 		redrawMapAndHelp();
-        	//player = new Player(currentRoom.getPlayerStart());
 		player.setPosition(currentRoom.getPlayerStartRow(), currentRoom.getPlayerStartCol());
         	boxes = currentRoom.getBoxes();
         	enemies = currentRoom.getEnemies();
@@ -214,10 +212,6 @@ public class Game {
 		save();
 		System.out.print("Game Saved!");
 		break;
-	    //case r:
-	//	restore();
-	//	break;
-            // handle movement
             case LEFT: player.move(0, -1, currentRoom);
                 break;
             case RIGHT: player.move(0, 1, currentRoom);
@@ -312,27 +306,22 @@ public class Game {
 	PrintWriter pw;
 	try{
 	   FileOutputStream file = new FileOutputStream("Save.txt");
-	   //File f = new File("Save.txt");
 	   pw = new PrintWriter(file);
-	   //world.save(pw);
 	   currentRoom.save(pw);
 	   player.save(pw);
 	   numEnemies = enemies.size();
 	   for(int i=0; i<numEnemies; i++){
 		enemies.get(i).save(pw);
-//		pw.println(" ");
 	   }
 	   pw.println(".");
 	   numBoxes = boxes.size();
 	   for(int i=0; i<numBoxes; i++){
 		boxes.get(i).save(pw);
-//		pw.println(" ");
 	   }
 	   pw.println(".");
 	   numTeles = teles.size();
 	   for(int i=0; i<numTeles; i++){
 		teles.get(i).save(pw);
-//		pw.println(" ");
 	   }
 	   pw.println(".");
 	   int numBosses = bosses.size();
@@ -340,10 +329,6 @@ public class Game {
 		 bosses.get(i).save(pw);
 	   }
 	   pw.println(".");
-     //ArrayList inventory = new ArrayList<>();
-     //for(Item i: player.getInventory()){
-     //   player.getInventory().save(pw);
-     //}
      pw.close();
 	}catch (FileNotFoundException e){
 	   System.out.print("Something went wrong =(");
@@ -401,7 +386,7 @@ public class Game {
             Box thingHere = checkForBox();
             if (thingHere != null) {
                 setStatus("Here you find: " + thingHere.getItem().getName());
-            } //NEW CALL, if(thingHere !=null) CHANGE ROOM, SET ROOM = NEXT ROOM
+            }
         }
     }
 }
