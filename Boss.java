@@ -38,15 +38,11 @@ public class Boss extends Character {
 	damageTypes.add(15);
     }
     
-<<<<<<< HEAD
-    public Boss(Scanner s, String tempName){
-=======
     /**
     * Reads in a Boss object from a file 
     * @param s Scanner used to read in file
     */
-    public Boss(Scanner s){
->>>>>>> a2cc5bbc8f9c128cbfa852324b6689f336f0b9f1
+    public Boss(Scanner s, String tempName){
 	super(0, 0, '%', Color.RED, 50);
 	name = tempName;
 	row = s.nextInt();

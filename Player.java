@@ -45,7 +45,9 @@ public class Player extends Character {
 				type = ItemType.Other;
 				break;
 		}
+		System.out.println(iType);
 		String name = s.nextLine();
+		System.out.println(name + ": is the name");
 		int weight = s.nextInt();
 		int value = s.nextInt();
 		int strength = s.nextInt();
@@ -129,8 +131,17 @@ public class Player extends Character {
 	pw.println(getHealth());
 //	pw.println(getDamage());
 //	pw.println(getProtection());
-	pw.println(items.getEquippedWeapon());
-	pw.println(items.getEquippedArmor());
+	pw.println(items.getEquippedWeapon().getType());
+	pw.println(items.getEquippedWeapon().getName());
+	pw.println(items.getEquippedWeapon().getWeight());
+	pw.println(items.getEquippedWeapon().getValue());
+	pw.println(items.getEquippedWeapon().getStrength());
+	pw.println(items.getEquippedArmor().getType());
+	pw.println(items.getEquippedArmor().getName());
+	pw.println(items.getEquippedArmor().getWeight());
+	pw.println(items.getEquippedArmor().getValue());
+	pw.println(items.getEquippedArmor().getStrength());
+
 	int i = 0;
 	while(i < listOfItems.size()){
 		pw.println(listOfItems.get(i).getType());
