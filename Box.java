@@ -1,6 +1,6 @@
 // Box.java
 // represents a pickup-able item
-
+import java.io.PrintWriter;
 import ansi_terminal.*;
 public class Box extends Entity {
     // the Item that is in the box
@@ -14,5 +14,11 @@ public class Box extends Entity {
 
     public Item getItem() {
         return item;
+    }
+
+    public void save(PrintWriter pw){
+	pw.println(getRow());
+	pw.println(getCol());
+	pw.println(getItem());	
     }
 }

@@ -10,8 +10,6 @@ import ansi_terminal.*;
 */
 public abstract class Character extends Entity {
     // the characters health points
-    private int hp;
-
     /**
     * Constructs a character and saves location and color. Sets the health of character
     * @param row row location

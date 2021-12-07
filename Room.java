@@ -30,7 +30,7 @@ public class Room {
     * @param roomNumber the roomNumber  assigned to a room
     */
     public Room(Scanner s, int roomNumber) {
-      this.roomNumber = roomNumber;
+      roomNumber = s.nextInt();
       rows = s.nextInt();
       cols = s.nextInt();
       s.nextLine();
@@ -196,6 +196,7 @@ public class Room {
     * @param pw used to print text to a file.
     */
     public void save(PrintWriter pw){
+	 pw.println(roomNumber);
 	 pw.println(rows);
 	 pw.println(cols);
 	 for (int row = 0; row < rows; row++) {
