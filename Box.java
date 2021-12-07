@@ -22,7 +22,7 @@ public class Box extends Entity {
 	row = s.nextInt();
 	col = s.nextInt();
 	ItemType type = ItemType.valueOf(s.next());
-	String itemName = s.nextLine();
+	String itemName = s.next();
 	int itemWeight = s.nextInt();
 	int itemValue = s.nextInt();
 	int itemStrength = s.nextInt();

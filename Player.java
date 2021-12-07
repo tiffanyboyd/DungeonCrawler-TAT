@@ -15,8 +15,8 @@ public class Player extends Character {
         items = new Inventory(100);
 
         // give them some basic stuff to start with
-        items.addAndEquip(new Item(ItemType.Weapon, "Stun Baton", 5, 12, 11));
-        items.addAndEquip(new Item(ItemType.Armor, "Crew Uniform", 15, 20, 3));
+        items.addAndEquip(new Item(ItemType.Weapon, "Stun_Baton", 5, 12, 11));
+        items.addAndEquip(new Item(ItemType.Armor, "Crew_Uniform", 15, 20, 3));
     }
 
     /**
@@ -26,7 +26,9 @@ public class Player extends Character {
     public Player(Scanner s){
 	super(0, 0, '@', Color.CYAN, 50);
 	row = s.nextInt();
+	System.out.println(row);
 	col = s.nextInt();
+	System.out.println(col);
 	hp = s.nextInt();
 	items = new Inventory(100);
 	//ItemType type = s.next();
@@ -46,7 +48,7 @@ public class Player extends Character {
 				break;
 		}
 		System.out.println(iType);
-		String name = s.nextLine();
+		String name = s.next();
 		System.out.println(name + ": is the name");
 		int weight = s.nextInt();
 		int value = s.nextInt();
@@ -54,7 +56,7 @@ public class Player extends Character {
 		items.addAndEquip(new Item(type, name, weight, value, strength));
 		i++;
 	}
-	String next = s.nextLine();
+	String next = s.next();
 	while (!next.equals(".")) {
 		String iType = s.next();
 		ItemType type = null;
@@ -69,12 +71,12 @@ public class Player extends Character {
 				type = ItemType.Other;
 				break;
 		}
-		String name = s.nextLine();
+		String name = s.next();
 		int weight = s.nextInt();
 		int value = s.nextInt();
 		int strength = s.nextInt();
 		items.add(new Item(type, name, weight, value, strength));
-		next = s.nextLine();
+		next = s.next();
 	}	
     }
 
