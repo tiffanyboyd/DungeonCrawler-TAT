@@ -3,8 +3,14 @@
 
 import java.util.Random;
 import java.util.ArrayList;
+/**
+ *Item Generator Creates new items randomly from a list of 15
+ */
 public class ItemGenerator {
     private static Random rng = new Random();
+    /**
+     *Creates an ArrayList of items and randomly chooses one to return as the item
+     */
     public static Item generate() {
 	ArrayList<Item> items = new ArrayList<Item>();
         items.add(new Item(ItemType.Weapon, "Flamethrower", 2, 30,25));

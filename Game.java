@@ -38,9 +38,14 @@ public class Game {
     */
     public Game(Scanner in) {
 	world = new World();
-	currentRoom = new Room(in);
+	currentRoom = new Room(in, 1);
 	currentRoom.draw();
-	player = new Player(in);
+	System.out.println(currentRoom.getRoomNumber());
+	System.out.println(currentRoom.getRows());
+	System.out.println(currentRoom.getCols());
+	int pRow = in.nextInt();
+	int pCol = in.nextInt();
+	player = new Player(in, pRow, pCol);
 	//loop for enemies
 	String next = in.next();
 	enemies = new ArrayList<Enemy>();

@@ -23,12 +23,12 @@ public class Player extends Character {
     * Reads in Player stats saved within a file.
     * @param s Scanner used to read in from file
     */
-    public Player(Scanner s){
-	super(0, 0, '@', Color.CYAN, 50);
-	row = s.nextInt();
-	System.out.println(row);
-	col = s.nextInt();
-	System.out.println(col);
+    public Player(Scanner s, int row, int col){
+	super(row, col, '@', Color.CYAN, 50);
+//	row = s.nextInt();
+//	System.out.println(row);
+//	col = s.nextInt();
+//	System.out.println(col);
 	hp = s.nextInt();
 	items = new Inventory(100);
 	//ItemType type = s.next();

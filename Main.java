@@ -31,6 +31,7 @@ public class Main {
       Terminal.rawMode();
       Game gameload = new Game(save);
 	gameload.run();
+	System.exit(-1);
   }else if (!choice.equals("n")){
       System.out.print("Please type either 'y' or 'n'");
   }

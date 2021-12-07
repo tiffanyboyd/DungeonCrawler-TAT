@@ -40,13 +40,16 @@ public class Room {
 	while(row < rows){
          grid[row]= s.nextLine();
 	 row++;
+
        }
 	System.out.println(grid);
      }
      public Room(Scanner s){
 	roomNumber = s.nextInt();
 	rows = s.nextInt();
+	System.out.println(rows);
 	cols = s.nextInt();
+	System.out.println(cols);
 	s.nextLine();
 	grid = new String[rows];
 	int row = 0;
@@ -54,7 +57,7 @@ public class Room {
 	   grid[row]= s.nextLine();
 	   row++;
 	}
-	 System.out.println(grid);
+	 System.out.println(grid.toString());
      }
     // returns the player's strting location in this room
     /**
@@ -166,14 +169,14 @@ public class Room {
     }
     
     /**
-    * Returns the row location of something
+    * Returns the row location of the room
     */
     public int getRows() {
         return rows;
     }
 
     /**
-    * Returns the column location of something
+    * Returns the column location of the room
     */
     public int getCols() {
         return cols;

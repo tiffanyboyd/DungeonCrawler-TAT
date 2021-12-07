@@ -2,9 +2,15 @@
 // this class contains a static method for creating enemies randomly
 import java.util.ArrayList;
 import java.util.Random;
-
+/**
+ * Enemy Generator returns a random enemy from a list of 3 different options,
+ * there's more of the weaker enemies and fewer of the stronger ones to give
+ * the game more balance.
+ */
 public class EnemyGenerator {
-
+	/**
+	 * Enemy Generator creates an ArrayList and returns an enemy from it using a random int
+	 */
     private static Random rng = new Random(); 
 
     public static Enemy generate(int row, int col) {
