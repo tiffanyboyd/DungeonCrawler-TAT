@@ -31,6 +31,11 @@ public class Game {
 	bosses = currentRoom.getBosses();
 	teles = currentRoom.getTeleporters();
     }
+    
+    /**
+    * Constructs a game using a scanner to load a saved game.
+    * @param in Scanner used to read in file
+    */
     public Game(Scanner in) {
 	world = new World();
 	currentRoom = new Room(in);

@@ -118,6 +118,10 @@ public class Player extends Character {
 //	this.col = col;
 //    }
 
+    /**
+    * Saves the players location, stats, and inventory.
+    * @param pw PrintWriter saves text to file
+    */
     public void save(PrintWriter pw){
         ArrayList<Item> listOfItems = items.getInventoryList();
 	pw.println(getRow());
