@@ -109,7 +109,8 @@ public abstract class Character extends Entity {
     // deal damage for boss here
     private boolean dealBossDamage(Character other, Room room) {
         // this character does damage to the other character
-        int damageDone = getDamage() - other.getProtection();//MAKE THIS A RANDOM SWITCHING ON 3 DIFFERENT AMOUNTS OF DAMAGE THEN WHEN PRINTING TEXT PRINT DIFFERENT MESSAGES BASED ON DAMAGE DONE EX CLAWS, TAIL, BITE
+	int bossDamage = getDamage();
+        int damageDone = bossDamage - other.getProtection();
 
         // prevent negative damage
         if (damageDone < 0) {
@@ -127,7 +128,7 @@ public abstract class Character extends Entity {
         // print the info on this
         Terminal.warpCursor(room.getRows(), 0);
         if (other.hp > 0) {
-	    switch(getDamage()){
+	    switch(bossDamage){
 		case 12:	 
             		System.out.print(getName() + " swings its massive tail and does " + damageDone + " damage to " + other.getName()
                 	+ ", leaving you shaken but standing with " + other.hp + " health.\n\r");
@@ -149,11 +150,16 @@ public abstract class Character extends Entity {
         }
     }
 
-/*    public boolean fightBoss(Character other, Room room, ArrayList<Boss> bosses) {
+    public boolean fightBoss(Character other, Room room, ArrayList<Boss> bosses) {
         // do damage to them first
         boolean killed = dealDamage(other, room);
         if (killed) {
             bosses.remove(other);
+	    System.out.print("As you finish your last attack the Biomorph-Lord falls to its knees and crashes to the ground, the beast is dead and the station is saved!\n\r");
+	    Terminal.pause(2);
+	    System.out.print("YOU WON!!!");
+	    Terminal.pause(2);
+	    System.exit(-1);
         }
         System.out.printf("Press any key to return...\n\r");
         Terminal.getKey();
@@ -170,6 +176,6 @@ public abstract class Character extends Entity {
         System.out.printf("Press any key to return...\n\r");
         Terminal.getKey();
         return true;
-    }*/
+    }
 }
 

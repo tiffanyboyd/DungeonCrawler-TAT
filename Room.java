@@ -139,6 +139,19 @@ public class Room {
         return enemies;
     }
     
+    public ArrayList<Boss> getBosses() {
+        ArrayList<Boss> bosses = new ArrayList<Boss>();
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
+                if (grid[row].charAt(col) == '%') {
+                    bosses.add(new Boss("Biomorph-Lord",row, col, 100, 10, 13));
+                }
+            }
+        }
+
+        return bosses;
+    }
+    
     /**
     * Returns the row location of something
     */
@@ -159,7 +172,10 @@ public class Room {
     public int getRoomNumber() {
 	return roomNumber;
     }
-
+    
+    public void setRoomNumber(int newNum){
+	roomNumber = newNum;
+    }
     // draws the map to the screen
     /**
     * Draws the map to the screen
