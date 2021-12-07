@@ -89,6 +89,7 @@ public class Enemy extends Character {
     public Enemy(Scanner in, String name){
       super(0,0,'*',Color.BLUE,50);
       name = name;
+      System.out.println(name + ": is the name");
       row = in.nextInt();
       col = in.nextInt();
       hp = in.nextInt();

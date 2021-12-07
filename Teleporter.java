@@ -21,7 +21,7 @@ import ansi_terminal.*;
        * @param pw PrintWriter saves the text to a file.
        */
        public void save(PrintWriter pw){
-	  pw.println("This is a teleporter");
+	  pw.println("This_is_a_teleporter");
           pw.println(getRow());
           pw.println(getCol());
       }
@@ -30,9 +30,9 @@ import ansi_terminal.*;
       *Reads in teleporters from a file.
       * @param in Scanner used to read in files.
       */
-      public Teleporter(Scanner in, String tag){
+      public Teleporter(Scanner in){
         super(0, 0, '^', Color.CYAN);
-	filler = tag;
+	//filler = tag;
         row = in.nextInt();
         col = in.nextInt();
       }

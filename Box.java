@@ -16,9 +16,10 @@ public class Box extends Entity {
         this.item = item;
     }
     
-    public Box(Scanner s, String tag){
+    public Box(Scanner s){
 	super(0, 0, 'i', Color.MAGENTA);
-	filler = tag;
+	//System.out.println(filler);
+	//filler = tag;
 	row = s.nextInt();
 	col = s.nextInt();
 	ItemType type = ItemType.valueOf(s.next());
@@ -37,7 +38,7 @@ public class Box extends Entity {
     * @param pw PrintWriter used to write text to file
     */
     public void save(PrintWriter pw){
-	pw.println("this is a box");
+	pw.println("this_is_a_box");
 	pw.println(getRow());
 	pw.println(getCol());
 	Item tempItem = getItem();

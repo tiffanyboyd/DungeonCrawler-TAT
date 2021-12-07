@@ -29,7 +29,8 @@ public class Main {
   String choice = in.next();
   if(choice.equals("y")){
       Terminal.rawMode();
-      Game game = new Game(save);
+      Game gameload = new Game(save);
+	gameload.run();
   }else if (!choice.equals("n")){
       System.out.print("Please type either 'y' or 'n'");
   }

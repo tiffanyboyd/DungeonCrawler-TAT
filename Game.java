@@ -42,26 +42,34 @@ public class Game {
 	currentRoom.draw();
 	player = new Player(in);
 	//loop for enemies
-	String next = in.nextLine();
-        while(next != "."){//CHANGE THIS TO LOOP ON NEXT LINE BEING A .
+	String next = in.next();
+	enemies = new ArrayList<Enemy>();
+        while(!next.equals(".")){//CHANGE THIS TO LOOP ON NEXT LINE BEING A .
            Enemy enemy = new Enemy(in, next);
-	   next = in.nextLine();
+	   enemies.add(enemy);
+	   next = in.next();
         }
 	//loop for boxes
-	next = in.nextLine();
-	while(next != "."){
-	   Box box = new Box(in, next);
-	   next = in.nextLine();
+	boxes = new ArrayList<Box>();
+	String next2 = in.next();
+	while(!next2.equals(".")){
+	   Box box = new Box(in);
+	   boxes.add(box);
+	   next2 = in.next();
 	}
 	//teleporter (only ever one per room)
-	next = in.nextLine();
-	while(next != "."){
-	   Teleporter teleport = new Teleporter(in, next);
-	   next = in.nextLine();
+	teles = new ArrayList<Teleporter>();
+	String next3 = in.next();
+	while(!next3.equals(".")){
+	   Teleporter teleport = new Teleporter(in);
+	   teles.add(teleport);
+	   next3 = in.next();
 	}
-	while(next != "."){
+	bosses = new ArrayList<Boss>();
+	while(!next.equals(".")){
 	    Boss boss = new Boss(in, next);
-	    next = in.nextLine();
+	    bosses.add(boss);
+	    next = in.next();
 	}
     }
     // prints a help menu to the left of the map
@@ -307,19 +315,19 @@ public class Game {
 	   numEnemies = enemies.size();
 	   for(int i=0; i<numEnemies; i++){
 		enemies.get(i).save(pw);
-		pw.println(" ");
+//		pw.println(" ");
 	   }
 	   pw.println(".");
 	   numBoxes = boxes.size();
 	   for(int i=0; i<numBoxes; i++){
 		boxes.get(i).save(pw);
-		pw.println(" ");
+//		pw.println(" ");
 	   }
 	   pw.println(".");
 	   numTeles = teles.size();
 	   for(int i=0; i<numTeles; i++){
 		teles.get(i).save(pw);
-		pw.println(" ");
+//		pw.println(" ");
 	   }
 	   pw.println(".");
 	   int numBosses = bosses.size();
@@ -344,6 +352,9 @@ public class Game {
         boolean playing = true;
         while (playing) {
             // draw the entities
+	    if(boxes == null){
+		System.out.println("problem");
+	    }
             for (Box box : boxes) {
                 box.draw();
             }

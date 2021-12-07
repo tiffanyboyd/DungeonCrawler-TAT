@@ -58,7 +58,8 @@ public class Player extends Character {
 	}
 	String next = s.next();
 	while (!next.equals(".")) {
-		String iType = s.next();
+		String iType = next;
+		System.out.println(iType + ": is the Item Type");
 		ItemType type = null;
 		switch(iType){
 			case("Weapon"):
