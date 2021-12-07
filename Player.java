@@ -33,7 +33,7 @@ public class Player extends Character {
 	int i = 0;
 	while(i<2){
 		String iType = s.next();
-    ItemType type = null;
+	        ItemType type = null;
 		switch(iType){
 			case("Weapon"):
 				type = ItemType.Weapon;

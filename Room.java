@@ -42,7 +42,20 @@ public class Room {
 	 row++;
        }
 	System.out.println(grid);
-      }
+     }
+     public Room(Scanner s){
+	roomNumber = s.nextInt();
+	rows = s.nextInt();
+	cols = s.nextInt();
+	s.nextLine();
+	grid = new String[rows];
+	int row = 0;
+	while(row < rows){
+	   grid[row]= s.nextLine();
+	   row++;
+	}
+	 System.out.println(grid);
+     }
     // returns the player's strting location in this room
     /**
     * Returns the Player's starting location in this room
@@ -144,7 +157,7 @@ public class Room {
         for (int row = 1; row < rows; row++) {
             for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == '%') {
-                    bosses.add(new Boss("Biomorph-Lord",row, col, 100, 10, 13));
+                    bosses.add(new Boss("Biomorph-Lord",row, col, 100, 9, 9));
                 }
             }
         }

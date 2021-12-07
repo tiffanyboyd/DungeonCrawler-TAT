@@ -22,8 +22,8 @@ public class EnemyGenerator {
 	enemies.add(new Enemy("Mutated Biomorph", row, col, 30, 10, 6));
 	enemies.add(new Enemy("Mutated Biomorph", row, col, 30, 10, 6));
 	enemies.add(new Enemy("Mutated Biomorph", row, col, 30, 10, 6));
-	enemies.add(new Enemy("Heavily Mutated Biomorph", row, col, 50, 15, 9));
-	enemies.add(new Enemy("Heavily Mutated Biomorph", row, col, 50, 15, 9));
+	enemies.add(new Enemy("Heavily Mutated Biomorph", row, col, 40, 15, 9));
+	enemies.add(new Enemy("Heavily Mutated Biomorph", row, col, 40, 15, 9));
 
 	int n = rng.nextInt(15);
 	return enemies.get(n);
