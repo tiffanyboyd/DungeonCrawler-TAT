@@ -1,4 +1,7 @@
 // Boss.java
+/**
+* The Boss class includes information regarding a boss object.
+*/
 
 import java.util.Random;
 import java.io.PrintWriter;
@@ -14,7 +17,15 @@ public class Boss extends Character {
     private boolean bossBattleActive;
     private ArrayList<Integer> damageTypes;
 
-    public Boss(String name, int row, int col, int hp, int damage, int protection) {
+   /**
+   * Constructs a Boss enemy object. 
+   * @param row sets the row location
+   * @param col sets the colomn location
+   * @param hp sets the health
+   * @param damage  sets the damage enemy can do
+   * @param protection sets the protection 
+   */
+   public Boss(String name, int row, int col, int hp, int damage, int protection) {
         super(row, col, '%', Color.RED, hp);
         this.name = name;
         this.damage = damage;
@@ -27,6 +38,10 @@ public class Boss extends Character {
 	damageTypes.add(15);
     }
     
+    /**
+    * Reads in a Boss object from a file 
+    * @param s Scanner used to read in file
+    */
     public Boss(Scanner s){
 	super(0, 0, '%', Color.RED, 50);
 	name = s.nextLine();
@@ -58,11 +73,18 @@ public class Boss extends Character {
         return name;
     }
 
+    /**
+    * Returns true if the Boss is in combat.
+    */
     public void setBossBattleActive() {
         bossBattleActive = true;
     }
 
     // randomly move this enemy in the room
+    /**
+    * Randomly moves the Boss enemy within the room.
+    * @param room the room the Boss is in
+    */
     public void walk(Room room) {
         // if a battle is active with this enemy, they DONT walk right after
         if (bossBattleActive) {
@@ -88,6 +110,11 @@ public class Boss extends Character {
             }
         }
      }
+
+     /**
+     * Saves the Boos enemy within a file.
+     * @param pw PrintWrtier saves the texts to file
+     */
      public void save(PrintWriter pw){
 	pw.println(getName());
 	pw.println(getRow());
