@@ -4,9 +4,6 @@ import java.util.Random;
 import java.io.PrintWriter;
 import ansi_terminal.*;
 
-/**
-* 
-*/
 public class Enemy extends Character {
     private String name;
     private int damage;
@@ -14,8 +11,6 @@ public class Enemy extends Character {
     private static Random rng;
     private boolean battleActive;
 
-    /*
-    */
     public Enemy(String name, int row, int col, int hp, int damage, int protection) {
         super(row, col, '*', Color.RED, hp);
         this.name = name;
@@ -25,30 +20,23 @@ public class Enemy extends Character {
         rng = new Random();
     }
 
-    /*
-    */
+    
     @Override
     public int getDamage() {
         return damage;
     }
 
-    /*
-    */
-    @Override
+   @Override
     public int getProtection() {
         return protection;
     }
 
-    /*
-    */
-    @Override
+   @Override
     public String getName() {
         return name;
     }
 
-    /*
-    */
-    public void setBattleActive() {
+   public void setBattleActive() {
         battleActive = true;
     }
 

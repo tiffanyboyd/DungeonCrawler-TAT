@@ -28,6 +28,10 @@ public class Box extends Entity {
         return item;
     }
 
+    /**
+    * Saves the the boxes withing the room player is currently in.
+    * @param pw PrintWriter used to write text to file
+    */
     public void save(PrintWriter pw){
 	pw.println(getRow());
 	pw.println(getCol());

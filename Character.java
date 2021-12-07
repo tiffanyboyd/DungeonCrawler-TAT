@@ -107,6 +107,11 @@ public abstract class Character extends Entity {
     }
     //does the boss fight
     // deal damage for boss here
+    /**
+    * Calculates the damage between the player and enemy.
+    * @param other either the enemy or the player
+    * @param room the room player is in
+    */
     private boolean dealBossDamage(Character other, Room room) {
         // this character does damage to the other character
 	int bossDamage = getDamage();
@@ -150,6 +155,13 @@ public abstract class Character extends Entity {
         }
     }
 
+    /**
+    * Returns true if boss enemy is defeated.
+    * Calculates the damage between player and boss enemy.
+    * @param other either the enemy or the player
+    * @param room the room player is currently in
+    * @param bosses ArrayList of Bosses
+    */
     public boolean fightBoss(Character other, Room room, ArrayList<Boss> bosses) {
         // do damage to them first
         boolean killed = dealDamage(other, room);
