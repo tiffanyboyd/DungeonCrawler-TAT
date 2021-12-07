@@ -6,6 +6,8 @@ import ansi_terminal.*;
 public class Box extends Entity {
     // the Item that is in the box
     private Item item;
+    private int row;
+    private int col;
 
     // add a box with a given item in it
     public Box(int row, int col, Item item) {

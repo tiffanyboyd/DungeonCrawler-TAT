@@ -4,7 +4,8 @@ import ansi_terminal.*;
  
  
   public class Teleporter extends Entity{
- 
+	private int row;
+	private int col; 
     /**
     * Constructs a teleporter and holds location.
     * @param row the row to set the teleporter
