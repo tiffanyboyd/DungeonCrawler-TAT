@@ -116,8 +116,6 @@ public class Game {
 	   setStatus("There is no teleporter here to jump from...");
 	   Terminal.pause(1.25);
        }else{
-	   System.out.print(currentRoom.getRoomNumber());
-	   Terminal.pause(2);
 	   setStatus("Teleporter found, jump commencing in: 3");
 	   Terminal.pause(1);
 	   setStatus("Teleporter found, jump commencing in: 2");

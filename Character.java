@@ -135,16 +135,16 @@ public abstract class Character extends Entity {
         if (other.hp > 0) {
 	    switch(bossDamage){
 		case 12:	 
-            		System.out.print(getName() + " swings its massive tail and does " + damageDone + " damage to " + other.getName()
-                	+ ", leaving you shaken but standing with " + other.hp + " health.\n\r");
+            		System.out.print(getName() + " swings its huge tail and does " + damageDone + " damage to " + other.getName()
+                	+ ", leaving you shaken but standing at " + other.hp + " health.\n\r");
 			break;
 		case 10:
 			System.out.print(getName() + " opens its maw and spits a shot of acid at you, doing " + damageDone + " damage to " + other.getName()
-                	+ ", you manage to dodge most of it leaving you with " + other.hp + " health.\n\r");
+                	+ ", leaving you with " + other.hp + " health.\n\r");
 			break;
 		case 15:
 			System.out.print(getName() + " swipes at you with huge claws dealing " + damageDone + " damage to " + other.getName()
-                	+ ", leaving you bloody but still alive with " + other.hp + " health.\n\r");
+                	+ ", leaving you still alive with " + other.hp + " health.\n\r");
 			break;
 		}
             return false;
