@@ -244,7 +244,6 @@ public class Room {
             //pw.print("\n\r");
 	    pw.println();
         }
-	pw.println('.');
     }
 }
 

@@ -86,9 +86,9 @@ public class Enemy extends Character {
     * Reads in Enemy stats from a file
     * @param in Scanner used to read in file
     */
-    public Enemy(Scanner in){
+    public Enemy(Scanner in, String name){
       super(0,0,'*',Color.BLUE,50);
-      name = in.next();
+      name = name;
       row = in.nextInt();
       col = in.nextInt();
       hp = in.nextInt();

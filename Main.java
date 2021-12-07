@@ -3,9 +3,19 @@
 
 import ansi_terminal.*;
 import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String args[]) {
+	Scanner save = new Scanner(System.in);
+	try{
+	   FileInputStream file = new FileInputStream("Save.txt");
+	   save = new Scanner(file);
+	}catch (FileNotFoundException e){
+		System.out.print("Something went wrong :(");
+		System.exit(-1);
+	}
 	Scanner in = new Scanner(System.in);
 	System.out.println("What is your name?");
 	String name = in.nextLine();
@@ -18,7 +28,8 @@ public class Main {
   System.out.println("Would you like to load a previous game? ( y/n )");
   String choice = in.next();
   if(choice.equals("y")){
-      Game game = new Game(in);
+      Terminal.rawMode();
+      Game game = new Game(save);
   }else if (!choice.equals("n")){
       System.out.print("Please type either 'y' or 'n'");
   }

@@ -8,6 +8,7 @@ public class Box extends Entity {
     private Item item;
     private int row;
     private int col;
+    private String filler;
 
     // add a box with a given item in it
     public Box(int row, int col, Item item) {
@@ -15,8 +16,9 @@ public class Box extends Entity {
         this.item = item;
     }
     
-    public Box(Scanner s){
+    public Box(Scanner s, String tag){
 	super(0, 0, 'i', Color.MAGENTA);
+	filler = tag;
 	row = s.nextInt();
 	col = s.nextInt();
 	ItemType type = ItemType.valueOf(s.next());
@@ -35,6 +37,7 @@ public class Box extends Entity {
     * @param pw PrintWriter used to write text to file
     */
     public void save(PrintWriter pw){
+	pw.println("this is a box");
 	pw.println(getRow());
 	pw.println(getCol());
 	Item tempItem = getItem();

@@ -27,9 +27,9 @@ public class Boss extends Character {
 	damageTypes.add(15);
     }
     
-    public Boss(Scanner s){
+    public Boss(Scanner s, String tempName){
 	super(0, 0, '%', Color.RED, 50);
-	name = s.nextLine();
+	name = tempName;
 	row = s.nextInt();
 	col = s.nextInt();
 	hp = s.nextInt();

@@ -42,16 +42,26 @@ public class Game {
 	currentRoom.draw();
 	player = new Player(in);
 	//loop for enemies
-        for(Enemy enemy: enemies){//CHANGE THIS TO LOOP ON NEXT LINE BEING A .
-           enemy = new Enemy(in);
+	String next = in.nextLine();
+        while(next != "."){//CHANGE THIS TO LOOP ON NEXT LINE BEING A .
+           Enemy enemy = new Enemy(in, next);
+	   next = in.nextLine();
         }
 	//loop for boxes
-	for(Box box : boxes){
-	   box = new Box(in);
+	next = in.nextLine();
+	while(next != "."){
+	   Box box = new Box(in, next);
+	   next = in.nextLine();
 	}
 	//teleporter (only ever one per room)
-	for(Boss boss : bosses){
-	    boss = new Boss(in);
+	next = in.nextLine();
+	while(next != "."){
+	   Teleporter teleport = new Teleporter(in, next);
+	   next = in.nextLine();
+	}
+	while(next != "."){
+	    Boss boss = new Boss(in, next);
+	    next = in.nextLine();
 	}
     }
     // prints a help menu to the left of the map
@@ -316,6 +326,7 @@ public class Game {
 	   for(int i =0; i<numBosses; i++){
 		 bosses.get(i).save(pw);
 	   }
+	   pw.println(".");
      //ArrayList inventory = new ArrayList<>();
      //for(Item i: player.getInventory()){
      //   player.getInventory().save(pw);
