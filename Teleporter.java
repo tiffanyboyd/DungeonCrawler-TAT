@@ -1,5 +1,6 @@
 import ansi_terminal.*;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
 * Teleporter class
@@ -27,7 +28,8 @@ public class Teleporter extends Entity{
     /**
     *Reads in teleporters from a file
     * @param in Scanner used to read in files
-    */public Teles(Scanner in){
+    */
+    public void Teles(Scanner in){
       row = in.nextInt();
       col = in.nextInt();
     }

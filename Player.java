@@ -19,6 +19,10 @@ public class Player extends Character {
         items.addAndEquip(new Item(ItemType.Armor, "Crew Uniform", 15, 20, 3));
     }
 
+    /**
+    * Reads in Player stats saved within a file.
+    * @param s Scanner used to read in from file
+    */
     public Player(Scanner s){
 	super(0, 0, '@', Color.CYAN, 50);
 	row = s.nextInt();
