@@ -18,6 +18,7 @@ public class Game {
     private Player player;
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
+    private ArrayList<Boss> bosses;
     private ArrayList<Teleporter> teles;
 
    public Game() {
@@ -27,6 +28,7 @@ public class Game {
         player = new Player(currentRoom.getPlayerStart());
         boxes = currentRoom.getBoxes();
         enemies = currentRoom.getEnemies();
+	bosses = currentRoom.getBosses();
 	teles = currentRoom.getTeleporters();
     }
     public Game(Scanner in) {
@@ -98,25 +100,28 @@ public class Game {
     * Changes the room the player is in.
     */
     private void changeRoom() {
-       Room tempRoom1 = world.getRoom1();
        Teleporter gate = checkForTele();
        if (gate == null) {
 	   setStatus("There is no teleporter here to jump from...");
 	   Terminal.pause(1.25);
        }else{
+	   System.out.print(currentRoom.getRoomNumber());
+	   Terminal.pause(2);
 	   setStatus("Teleporter found, jump commencing in: 3");
 	   Terminal.pause(1);
 	   setStatus("Teleporter found, jump commencing in: 2");
 	   Terminal.pause(1);
 	   setStatus("Teleporter found, jump commencing in: 1");
 	   Terminal.pause(1);
-	   if(currentRoom == tempRoom1){
+	   if(currentRoom.getRoomNumber() == 0 || currentRoom.getRoomNumber() == 1){
 		currentRoom = world.getRoom2();
+		currentRoom.setRoomNumber(2);
 		redrawMapAndHelp();
 	        //player = new Player(currentRoom.getPlayerStart());
 		player.setPosition(currentRoom.getPlayerStartRow(), currentRoom.getPlayerStartCol());
         	boxes = currentRoom.getBoxes();
         	enemies = currentRoom.getEnemies();
+		bosses = currentRoom.getBosses();
 		teles = currentRoom.getTeleporters(); 
 	   }else{
 		currentRoom = world.getRoom3();
@@ -124,6 +129,7 @@ public class Game {
         	player = new Player(currentRoom.getPlayerStart());
         	boxes = currentRoom.getBoxes();
         	enemies = currentRoom.getEnemies();
+		bosses = currentRoom.getBosses();
 		teles = currentRoom.getTeleporters(); 
 	   }
     }
@@ -249,7 +255,7 @@ public class Game {
             opponent.setBattleActive();
             return player.fight(opponent, currentRoom, enemies);
         }
-/*	
+	
 	Boss opponentB = null;
 	for (Boss boss : bosses) {
 	   if (playerLocation.isAdjacent(boss.getPosition())) {
@@ -262,7 +268,7 @@ public class Game {
 	    opponentB.setBossBattleActive();
 	    return player.fightBoss(opponentB, currentRoom, bosses);
 	}
-*/
+
         return true;
     }
 
@@ -316,6 +322,9 @@ public class Game {
             for (Enemy enemy : enemies) {
                 enemy.draw();
             }
+	    for (Boss boss : bosses) {
+		boss.draw();
+	    }
             player.draw();
 
             // read a key from the user
@@ -330,6 +339,10 @@ public class Game {
             for (Enemy enemy : enemies) {
                 enemy.walk(currentRoom);
             }
+
+	    for (Boss boss : bosses) {
+		boss.walk(currentRoom);
+	    }
 
             // check for battles
             if (checkBattles() == false) {

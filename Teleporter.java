@@ -29,11 +29,11 @@ public class Teleporter extends Entity{
     *Reads in teleporters from a file
     * @param in Scanner used to read in files
     */
-    public void Teles(Scanner in){
-      super(0, 0, '^', Color.CYAN);
-      row = in.nextInt();
-      col = in.nextInt();
-    }
+//    public Teleporter(Scanner in){
+//      super(0, 0, '^', Color.CYAN);
+//      row = in.nextInt();
+//      col = in.nextInt();
+//    }
  
 
 }
